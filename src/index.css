@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer components {
+    body {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-image: url(./components/layout/assets/images/b1.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+
+
+
+
+
+    /* Scroll1 UI */
+      .scroll1::-webkit-scrollbar {
+        width: 5px;
+      }
+      
+      .scroll1::-webkit-scrollbar-track {
+        border-radius:20px;
+        background: #ddd;
+      }
+      
+      .scroll1::-webkit-scrollbar-thumb {
+        border-radius:20px;
+        background: #666;
+      }
+
+
+
+    
+    /* Day&Night Click */
+      .dayNight {
+        cursor: pointer;
+      }
+      .dayNight input {
+        display: none;
+      }
+      .dayNight input + div {
+        border-radius: 50%;
+        width: 26px;
+        height: 26px;
+        position: relative;
+        box-shadow: inset 10px -10px 0 0 #fff;
+        transform: scale(1) rotate(-2deg);
+        transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+      }
+      .dayNight input + div:before {
+        content: "";
+        width: inherit;
+        height: inherit;
+        border-radius: inherit;
+        position: absolute;
+        left: 0;
+        top: 0;
+        transition: background 0.3s ease;
+      }
+      .dayNight input + div:after {
+        content: "";
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        margin: -2px 0 0 -2px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        box-shadow: 0 -18px 0 #fbd429, 0 18px 0 #fbd429, 18px 0 0 #fbd429, -18px 0 0 #fbd429, 12px 12px 0 #fbd429, -12px 12px 0 #fbd429, 12px -12px 0 #fbd429, -12px -12px 0 #fbd429;
+        transform: scale(0);
+        transition: all 0.3s ease;
+      }
+      .dayNight input:checked + div {
+        box-shadow: inset 32px -32px 0 0 #fff;
+        transform: scale(0.5) rotate(0deg);
+        transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+      }
+      .dayNight input:checked + div:before {
+        background: #fbd429;
+        transition: background 0.3s ease 0.1s;
+      }
+      .dayNight input:checked + div:after {
+        transform: scale(1.5);
+        transition: transform 0.5s ease 0.15s;
+      }
+}

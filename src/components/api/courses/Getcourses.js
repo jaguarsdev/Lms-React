@@ -22,9 +22,26 @@ const GetCourses = () => {
 
     return (
         <Swiper
-        spaceBetween={50}
-        slidesPerView={3}
-        loop={true}
+            slidesPerView={2}
+            spaceBetween={10}
+            pagination={{
+            clickable: true,
+            }}
+            breakpoints={{
+            640: {
+                slidesPerView: 3,
+                spaceBetween: 10,
+            },
+            768: {
+                slidesPerView: 4,
+                spaceBetween: 20,
+            },
+            1024: {
+                slidesPerView: 5,
+                spaceBetween: 30,
+            },
+            }}
+            className="mahbob"
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         >

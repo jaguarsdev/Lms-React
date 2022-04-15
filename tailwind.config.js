@@ -4,7 +4,14 @@ module.exports = {
   ],
   darkMode: 'class',
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        center: true,
+      },
+      fontFamily: {
+        'yekb': ['yekanbakh','Arial', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
 }

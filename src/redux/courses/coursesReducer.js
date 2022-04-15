@@ -4,19 +4,19 @@ const initialState = {
     error: ""
 }
 
-const coursesReducer = (state:initialState , action) => {
+const coursesReducer = (state=initialState , action) => {
     switch (action.type) {
-        case "Fetch_PRODUCT_REQUEST":
+        case "FETCH_COURSES_REQUEST":
             return { 
                 ...state,
                 loading: true
             }
-        case "Fetch_PRODUCT_SUCCESS":
+        case "FETCH_COURSES_SUCCESS":
             return {
                 loading: false,
                 courses: action.payload
             }
-        case "Fetch_PRODUCT_FAILURE":
+        case "FETCH_COURSES_FAILURE":
             return {
                 loading: false,
                 courses: action.payload

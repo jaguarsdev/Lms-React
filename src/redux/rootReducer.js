@@ -1,17 +1,9 @@
 import { combineReducers } from "redux";
 
-import coursesReducer from "./courses/coursesReducer";
-
-
-// Dark & Night Button Reducer
-// import darknightReducer from "./darknight(off)/darknightReducer"
-
+import coursesReducer from "./courses/coursesReducer"
 
 const rootReducer = combineReducers({
     
-    // Dark & Night Button Reducer
-    // darknightState: darknightReducer,
-
     coursesState: coursesReducer,
 
 })

@@ -1,31 +1,37 @@
 import axios from "axios"
+import { BASE_COURSES_API } from "../../components/api/baseUrl"
 
-import { BADE_LEARN_URL } from '../../components/Api/globalApi'
 
-
-const fetchProductRequest = () => {
-    return{ type: "Fetch_PRODUCT_REQUEST"}
+const fetchCoursesRequest = () => {
+    return {
+        type: "FETCH_COURSES_REQUEST"
+    }
 }
 
-const fetchProductSuccsess = courses => {
-    return{ type: "Fetch_PRODUCT_SUCCESS", payload: courses}
+const fetchCoursesSuccess = courses => {
+    return {
+        type: "FETCH_COURSES_SUCCESS",
+        payload: courses
+    }
 }
 
-const fetchProductFailure = error => {
-    return{ type: "Fetch_PRODUCT_FAILURE", payload: error}
+const fetchCoursesFailure = error => {
+    return {
+        type: "FETCH_COURSES_FAILURE",
+        payload: error
+    }
 }
-
 export const fetchCourses = () => {
     return (dispatch) => {
-        dispatch(fetchProductRequest());
-        axios.get(`${BADE_LEARN_URL}sfwd-courses`)
+        dispatch(fetchCoursesRequest());
+        axios.get(`${BASE_COURSES_API}sfwd-courses`)
             .then(response => {
                 const courses = response.data;
-                dispatch(fetchProductSuccsess())
+                dispatch(fetchCoursesSuccess(courses))
             })
             .catch(error => {
                 const errorMsg = error.message
-                dispatch(fetchProductFailure(errorMsg))
+                dispatch(fetchCoursesFailure(errorMsg))
             })
     }
 }

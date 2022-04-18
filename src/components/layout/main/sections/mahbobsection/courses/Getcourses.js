@@ -3,8 +3,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 // import axios from 'axios';
 
-import { fetchCourses } from '../../../redux/courses/coursesAction'
-import MapCourseDate from '../../layout/main/sections/mahbobsection/MapCourseDate'
+import { fetchCourses } from '../../../../../../redux/courses/coursesAction'
+import MapCourseDate from '../MapCourseDate'
 // import { BASE_COURSES_API } from '../baseUrl'
 
 import { Swiper, SwiperSlide } from 'swiper/react';

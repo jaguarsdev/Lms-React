@@ -1,6 +1,6 @@
 import React from 'react'
 
-import GetCourses from '../../../../api/courses/Getcourses'
+import GetCourses from './courses/Getcourses'
 
 
 import heart from '../../../assets/svgicon/heart.svg'

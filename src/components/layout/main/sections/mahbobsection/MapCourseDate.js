@@ -1,7 +1,6 @@
 import React from 'react';
 
-// Import Swiper React components
-// import { SwiperSlide } from 'swiper/react';
+import { Link } from 'react-router-dom';
 
 
 const MapCourseDate = ({courseData}) => {
@@ -62,7 +61,7 @@ const MapCourseDate = ({courseData}) => {
                                                     </ul>
                                                 </div>
                                                 <div className="bg-blue-600 py-1 rounded-md text-center font-bold w-full">
-                                                    <a href="" className="text-white">ثبت نام و شروع دوره</a>
+                                                    <Link to={`/course/${courseData.id}`} className="text-white">ثبت نام و شروع دوره</Link>
                                                 </div>
                                             </div>
                                         </div>

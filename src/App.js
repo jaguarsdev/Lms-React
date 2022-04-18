@@ -1,16 +1,19 @@
-
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 
 import Rootlayout from './components/layout/Rootlayout'
-import Getcourses from './components/api/courses/Getcourses'
+import GetCoursed from './components/layout/main/details-page/Getcoursed';
 
 function App() {
   return (
     <div className="container backdrop-blur bg-white/50 dark:bg-black/40 h-[90vh] w-[95vw] rounded-2xl overflow-y-hidden font-yekb">
       <Provider store={store}>
-        <Rootlayout />
-        <Getcourses />
+        <Routes>
+          <Route path="/course/:id" element={<GetCoursed />} />
+          <Route path="/" element={<Rootlayout />} />
+          <Route path="/*" element={<Navigate to="/" />} />
+        </Routes>
       </Provider>
     </div>
   );

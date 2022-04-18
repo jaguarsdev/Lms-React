@@ -1,7 +1,9 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-
+import iconClock from '../../../assets/svgicon/iconClock.svg';
+import iconUser from '../../../assets/svgicon/iconUser.svg';
+import iconJalasat from '../../../assets/svgicon/iconJalasat.svg';
 
 const MapCourseDate = ({courseData}) => {
 

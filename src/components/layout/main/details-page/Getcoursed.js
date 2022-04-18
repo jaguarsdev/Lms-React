@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import Dtail from './dtail';
 import { BASE_COURSES_API } from '../../../api/baseUrl';
+import Rootheader from '../../header/Rootheader';
 // import { fetchCoursed } from '../../../../redux/course-detail/coursedAction'
 const GetCoursed = () => {
     const params = useParams();
@@ -23,13 +24,13 @@ const GetCoursed = () => {
     }, [pageid]);
     console.log(Data.D)
     return (
-        <>
+        <>  
+            <Rootheader />
             {!Data.D ? 
             <h1>LOADING</h1> :
                 Data.E ?
                 <p>Somethin went wrong</p> :
                 <Dtail props={Data.D} />
-            
             }
         </>
     );

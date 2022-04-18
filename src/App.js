@@ -1,7 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
-
 import Rootlayout from './components/layout/Rootlayout'
 import GetCoursed from './components/layout/main/details-page/Getcoursed';
 

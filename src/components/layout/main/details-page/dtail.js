@@ -9,7 +9,8 @@ const Dtail = ({props}) => {
             heloo
             <h1>{props.id}</h1>
             <img src={props.acf.image} alt={props.title.rendered} />
-            <p>{props.content.rendered}</p>
+            <p dangerouslySetInnerHTML={{ __html: props.content.rendered }} />
+            {}
         </div>
     );
 };

@@ -6,7 +6,7 @@ const Dtail = ({props}) => {
 
     return (
         <div>
-            heloo
+            helooo
             <h1>{props.id}</h1>
             <img src={props.acf.image} alt={props.title.rendered} />
             <p>{props.content.rendered}</p>

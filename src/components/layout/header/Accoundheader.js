@@ -9,7 +9,7 @@ const Accoundheader = () => {
             <Darkandlight />
             <div id="login" className="md:hidden">
                 <div id="avatar" className="flex items-center">
-                    <img src={profile_img} className="w-10 h-10 rounded-full mr-3 ring-offset-2 ring-2 ring-offset-black ring-white" alt="" />
+                    <img src={profile_img} className="w-9 h-9 rounded-full mr-3 ring-2 ring-white" alt="" />
                 </div>
             </div>
             <div id="logout" className="hidden md:block">

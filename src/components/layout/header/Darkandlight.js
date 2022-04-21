@@ -8,7 +8,6 @@ const Darkandlight = () => {
         } else {
             document.getElementById('html').classList.remove('dark')
         }
-        // dispatch(themeDark())
     }
 
     return (

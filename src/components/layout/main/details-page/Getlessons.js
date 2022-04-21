@@ -12,7 +12,7 @@ const Getlessons = ({courseId}) => {
     useEffect(() => {
         // Get Lessons Data
         axios.get(`${BASE_COURSES_API}sfwd-lessons?course=${courseId}`, {
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVzdDEubG1zYXZhLmlyIiwiaWF0IjoxNjQ5OTMzMDU2LCJuYmYiOjE2NDk5MzMwNTYsImV4cCI6MTY1MDUzNzg1NiwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.7IfVjwwg34hmw-KYdGCZJf2lU9zrCbETyqdKYzO9jxY'}
+            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVzdDEubG1zYXZhLmlyIiwiaWF0IjoxNjUwNTQ5NTY1LCJuYmYiOjE2NTA1NDk1NjUsImV4cCI6MTY1MTE1NDM2NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.DLxC6mtcRjQv_DuAh2NA2fEPk_v3m1tKYg1CYLS27iQ'}
         })
             .then(res => setData({...Data, D: res.data}))
             .catch(error => setData({...Data, E: true}))
@@ -23,8 +23,6 @@ const Getlessons = ({courseId}) => {
 
     return (
         <>
-        <h1>Get Lesson Page</h1>
-
         {!Data.D ? 
             <h1>LOADING</h1> :
                 Data.E ?

@@ -8,7 +8,6 @@ const LessonData = ({lessonData, courseId}) => {
         
         <>
         <div>
-            <h1>Course Data Page</h1>
             <h1>{lessonData.id}</h1>
             <h2>{lessonData.title.rendered}</h2>
             <p dangerouslySetInnerHTML={{ __html: lessonData.content.rendered }} />

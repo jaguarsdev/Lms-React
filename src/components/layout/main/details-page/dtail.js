@@ -2,8 +2,6 @@ import React from 'react';
 
 const Dtail = ({props}) => {
 
-    console.log(props.id)
-
     return (
         <div>
             heloo

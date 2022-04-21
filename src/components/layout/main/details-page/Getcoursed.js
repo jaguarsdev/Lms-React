@@ -24,16 +24,25 @@ const GetCoursed = () => {
     // console.log(Data.D)
     return (
         <>  
+
             <Rootheader />
+            <main className="grid grid-cols-12 text-black dark:text-white h-full">
+                <div id="Mainbox" className="col-span-12  flex flex-col  overflow-y-scroll scroll1">
+                    <div id="Maincontent" className="bg-white/50 dark:bg-black/25 p-2 mb-52">
+                    
+                        {!Data.D ? 
+                        <h1>LOADING</h1> :
+                            Data.E ?
+                            <p>Somethin went wrong</p> :
+                            <Dtail props={Data.D} />
+                        }
+                        <Getlessons courseId={pageid} />
 
-            {!Data.D ? 
-            <h1>LOADING</h1> :
-                Data.E ?
-                <p>Somethin went wrong</p> :
-                <Dtail props={Data.D} />
-            }
+                    </div>
+                </div>
+            </main>
 
-            <Getlessons courseId={pageid} />
+
         </>
     );
 };

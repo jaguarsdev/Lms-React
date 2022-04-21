@@ -15,6 +15,11 @@
         background-size: cover;
     }
 
+  .bodydark {
+    background-image: url(./components/layout/assets/images/b5.webp) !important;
+  }
+
+
 
 
 

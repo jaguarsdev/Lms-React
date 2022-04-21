@@ -5,7 +5,7 @@ import leftarrow from '.././../assets/svgicon/leftarrow.svg';
 const Dtail = ({props}) => {
 
     return (
-        <div>
+        <div className=" mb-3">
             <img src={props.acf.image} alt={props.title.rendered} />
             {/* style={ {boxShadow: "0px 0px 15px -5px #00000090"} } */}
             <div className="flex justify-center items-center w-full mt-2 p-2 rounded-lg bg-gray-50 dark:bg-white/20 border border-dashed border-gray-400">

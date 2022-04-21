@@ -4,7 +4,7 @@ const Dtail = ({props}) => {
 
     return (
         <div>
-            heloo
+            <h1>Course Data Page</h1>
             <h1>{props.id}</h1>
             <img src={props.acf.image} alt={props.title.rendered} />
             <p dangerouslySetInnerHTML={{ __html: props.content.rendered }} />

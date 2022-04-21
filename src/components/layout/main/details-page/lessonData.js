@@ -1,14 +1,20 @@
 import React from 'react';
 
-const LessonData = ({lessonData}) => {
+import Gettopic from './Gettopic';
 
-    console.log(lessonData)
+const LessonData = ({lessonData, courseId}) => {
+
     return (
+        
+        <>
         <div>
+            <h1>Course Data Page</h1>
             <h1>{lessonData.id}</h1>
             <h2>{lessonData.title.rendered}</h2>
             <p dangerouslySetInnerHTML={{ __html: lessonData.content.rendered }} />
         </div>
+        <Gettopic lessonId={lessonData.id} courseId={courseId} />
+        </>
     );
 };
 

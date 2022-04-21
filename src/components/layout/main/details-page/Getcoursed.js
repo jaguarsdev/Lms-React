@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import { BASE_COURSES_API } from '../../../api/baseUrl';
 
-import Dtail from './dtail';
+import Dtail from './courseData';
 import Rootheader from '../../header/Rootheader';
 import Getlessons from './Getlessons';
 

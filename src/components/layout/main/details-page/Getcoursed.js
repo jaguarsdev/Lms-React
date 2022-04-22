@@ -5,6 +5,7 @@ import axios from 'axios';
 import { BASE_COURSES_API } from '../../../api/baseUrl';
 
 import Dtail from './courseData';
+import DtailLoading from './courseDataLoading';
 import Rootheader from '../../header/Rootheader';
 import Getlessons from './Getlessons';
 
@@ -32,9 +33,9 @@ const GetCoursed = () => {
                         <div className="grid md:grid-cols-12">
                             <div className="md:col-span-8">
                                 {!Data.D ? 
-                                <h1>LOADING</h1> :
+                                <DtailLoading /> :
                                     Data.E ?
-                                    <p>Somethin went wrong</p> :
+                                    <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
                                     <Dtail props={Data.D} />
                                 }
                                 <Getlessons courseId={pageid} />

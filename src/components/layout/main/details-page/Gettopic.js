@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BASE_COURSES_API } from '../../../api/baseUrl';
 
 import TopicData from './topicData'
+import TopicDataLoading from './topicDataLoading'
 
 const Gettopic = ({lessonId, courseId}) => {
 
@@ -23,9 +24,9 @@ const Gettopic = ({lessonId, courseId}) => {
     return (
         <>
             {!Data.D ? 
-            <h1>LOADING</h1> :
+            <TopicDataLoading /> :
                 Data.E ?
-                <p>Somethin went wrong</p> :
+                <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
                 Data.D.map(topic => <TopicData key={topic.id} topicData={topic} />)
             }
         </>

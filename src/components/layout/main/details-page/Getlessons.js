@@ -4,6 +4,7 @@ import axios from 'axios';
 import { BASE_COURSES_API } from '../../../api/baseUrl';
 
 import LessonData from './lessonData';
+import LessonDataLoading from './lessonDataLoading';
 
 const Getlessons = ({courseId}) => {
 
@@ -24,9 +25,9 @@ const Getlessons = ({courseId}) => {
     return (
         <>
         {!Data.D ? 
-            <h1>LOADING</h1> :
+            <LessonDataLoading /> :
                 Data.E ?
-                <p>Somethin went wrong</p> :
+                <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
                 Data.D.map(lesson => <LessonData key={lesson.id} lessonData={lesson} courseId={courseId} />)
             }
                         

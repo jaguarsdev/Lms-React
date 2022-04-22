@@ -1,8 +1,5 @@
 import React from 'react';
 
-
-
-
   const Dtail = ({props}) => {
         
 
@@ -17,7 +14,7 @@ import React from 'react';
             <div className="flex w-full mt-1 p-2 rounded-lg border border-dashed border-gray-400">
                 <p dangerouslySetInnerHTML={{ __html: props.content.rendered }} />
             </div>
-    </  div>
+        </div>
     );
 };
 

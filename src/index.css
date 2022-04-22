@@ -43,55 +43,117 @@
 
     
     /* Day&Night Click */
-      .dayNight {
-        cursor: pointer;
-      }
-      .dayNight input {
-        display: none;
-      }
-      .dayNight input + div {
-        border-radius: 50%;
-        width: 26px;
-        height: 26px;
-        position: relative;
-        box-shadow: inset 10px -10px 0 0 #fff;
-        transform: scale(1) rotate(-2deg);
-        transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
-      }
-      .dayNight input + div:before {
-        content: "";
-        width: inherit;
-        height: inherit;
-        border-radius: inherit;
-        position: absolute;
-        left: 0;
-        top: 0;
-        transition: background 0.3s ease;
-      }
-      .dayNight input + div:after {
-        content: "";
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        margin: -2px 0 0 -2px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        box-shadow: 0 -18px 0 #fbd429, 0 18px 0 #fbd429, 18px 0 0 #fbd429, -18px 0 0 #fbd429, 12px 12px 0 #fbd429, -12px 12px 0 #fbd429, 12px -12px 0 #fbd429, -12px -12px 0 #fbd429;
-        transform: scale(0);
-        transition: all 0.3s ease;
-      }
-      .dayNight input:checked + div {
-        box-shadow: inset 32px -32px 0 0 #fff;
-        transform: scale(0.5) rotate(0deg);
-        transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
-      }
-      .dayNight input:checked + div:before {
-        background: #fbd429;
-        transition: background 0.3s ease 0.1s;
-      }
-      .dayNight input:checked + div:after {
-        transform: scale(1.5);
-        transition: transform 0.5s ease 0.15s;
-      }
+    .dayNight {
+      cursor: pointer;
+    }
+    .dayNight input {
+      display: none;
+    }
+    .dayNight input + div {
+      border-radius: 50%;
+      width: 26px;
+      height: 26px;
+      position: relative;
+      box-shadow: inset 10px -10px 0 0 #fff;
+      transform: scale(1) rotate(-2deg);
+      transition: box-shadow 0.5s ease 0s, transform 0.4s ease 0.1s;
+    }
+    .dayNight input + div:before {
+      content: "";
+      width: inherit;
+      height: inherit;
+      border-radius: inherit;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: background 0.3s ease;
+    }
+    .dayNight input + div:after {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      margin: -2px 0 0 -2px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      box-shadow: 0 -18px 0 #fbd429, 0 18px 0 #fbd429, 18px 0 0 #fbd429, -18px 0 0 #fbd429, 12px 12px 0 #fbd429, -12px 12px 0 #fbd429, 12px -12px 0 #fbd429, -12px -12px 0 #fbd429;
+      transform: scale(0);
+      transition: all 0.3s ease;
+    }
+    .dayNight input:checked + div {
+      box-shadow: inset 32px -32px 0 0 #fff;
+      transform: scale(0.5) rotate(0deg);
+      transition: transform 0.3s ease 0.1s, box-shadow 0.2s ease 0s;
+    }
+    .dayNight input:checked + div:before {
+      background: #fbd429;
+      transition: background 0.3s ease 0.1s;
+    }
+    .dayNight input:checked + div:after {
+      transform: scale(1.5);
+      transition: transform 0.5s ease 0.15s;
+    }
+
+
+
+
+    /* SPINER */
+  .spinner {
+    -webkit-animation: rotate 2s linear infinite;
+            animation: rotate 2s linear infinite;
+    /* z-index: 2;
+    position: absolute; */
+    /* top: 50%;
+    left: 50%; */
+    /* margin: -25px 0 0 -25px; */
+    width: 30px;
+    height: 30px;
+  }
+  .spinner .path {
+    stroke: #41c3d3;
+    stroke-linecap: round;
+    -webkit-animation: dash 1.5s ease-in-out infinite;
+            animation: dash 1.5s ease-in-out infinite;
+  }
+  
+  @-webkit-keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  
+  @keyframes rotate {
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+  @-webkit-keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
+  @keyframes dash {
+    0% {
+      stroke-dasharray: 1, 150;
+      stroke-dashoffset: 0;
+    }
+    50% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -35;
+    }
+    100% {
+      stroke-dasharray: 90, 150;
+      stroke-dashoffset: -124;
+    }
+  }
 }

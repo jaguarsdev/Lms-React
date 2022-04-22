@@ -6,7 +6,7 @@ import iconUser from '../../../assets/svgicon/iconUser.svg';
 import iconJalasat from '../../../assets/svgicon/iconJalasat.svg';
 
 const MapCourseDate = ({courseData}) => {
-
+    // console.log(courseData)
   
     return (
         <>
@@ -36,13 +36,13 @@ const MapCourseDate = ({courseData}) => {
                     <ul className="p-2 flex flex-wrap justify-center gap-2  cursor-help">
                         <li className="flex hover:text-gray-300">
                             <img src={iconClock} className="w-4 h-4 ml-1" alt="iconClock" />
-                            5</li>
+                            {courseData.acf.hours}</li>
                         <li className="flex hover:text-gray-300">
                             <img src={iconJalasat} className="w-4 h-4" alt="iconJalasat" />
-                            200</li> 
+                            {courseData.acf.sessions}</li> 
                         <li className="flex hover:text-gray-300">
                             <img src={iconUser} className="w-4 h-4" alt="iconUser" />
-                            500</li>
+                            {courseData.acf.users}</li>
                         
                     </ul>
                 </ul>

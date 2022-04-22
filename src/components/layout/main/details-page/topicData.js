@@ -12,7 +12,7 @@ import leftarrow from '.././../assets/svgicon/leftarrow.svg';
 
 const TopicData = ({topicData}) => {
 
-    console.log(topicData)
+    // console.log(topicData)
 
     return (
         
@@ -25,7 +25,7 @@ const TopicData = ({topicData}) => {
         leaveTo="transform scale-95 opacity-0"
         >
         
-            <Disclosure.Panel className="text-gray-500 py-2 px-3">
+            <Disclosure.Panel className="text-gray-500 py-2 px-3 md:px-7">
 
                 <Disclosure>
                     <div className="flex justify-center flex-col w-full px-2 py-3 rounded-lg bg-gray-50 dark:bg-white/20" style={ {boxShadow: "0px 0px 15px -5px #00000090"} }> 
@@ -68,7 +68,7 @@ const TopicData = ({topicData}) => {
                                                             controls
                                                             preload="none"
                                                             src={topicData.acf.video}
-                                                            poster="https://media-files.vidstack.io/poster-seo.png"
+                                                            // poster="https://media-files.vidstack.io/poster-seo.png"
                                                         />
                                                     </Video>
                                                 </MediaVisibility>

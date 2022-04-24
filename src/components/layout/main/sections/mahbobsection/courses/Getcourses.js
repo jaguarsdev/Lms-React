@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { fetchCourses } from '../../../../../../redux/courses/coursesAction'
 import MapCourseDate from '../MapCourseDate'
+import MapCourseDateLoading from '../MapCourseDateLoading'
 // import { BASE_COURSES_API } from '../baseUrl'
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,7 +18,7 @@ const GetCourses = () => {
     useEffect(() => {
         dispatch(fetchCourses())
         
-    }, [])
+    }, [dispatch])
 
 
     return (
@@ -47,7 +48,7 @@ const GetCourses = () => {
         >
             {
                 coursesState.loading ? 
-                <h1>loading</h1> :
+                <SwiperSlide><MapCourseDateLoading /></SwiperSlide> :
                 coursesState.error ?
                     <p>Somethin went wrong</p> :
                     coursesState.courses.map(course => 

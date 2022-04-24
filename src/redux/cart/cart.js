@@ -2,8 +2,6 @@ import React from 'react';
 
 const Cart = ( {props} ) => {
 
-    console.log(props)
-
     return (
         <div>
             <h1> {props.title.rendered} </h1>

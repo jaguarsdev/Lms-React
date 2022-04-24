@@ -19,10 +19,10 @@ const MapCourseDate = ({courseData}) => {
             <div id="productContBox" className="flex flex-col p-1 xl:p-2 gap-2 bg-white shadow-lg dark:bg-white/30 rounded-lg">
 
                 <div id="prodTitle" className="flex items-center gap-2">
-                    <a href=""><div className="w-10 h-10 border border-teal-500 rounded-lg overflow-hidden">
+                <Link to={`/course/${courseData.id}`}><div className="w-10 h-10 border border-teal-500 rounded-lg overflow-hidden">
                         <img src={courseData.acf.ostad_img} alt={courseData.title.rendered} />
-                    </div></a>
-                    <a href=""><h3 className="font-bold">{courseData.title.rendered}</h3></a>
+                    </div></Link>
+                    <Link to={`/course/${courseData.id}`}><h3 className="font-bold">{courseData.title.rendered}</h3></Link>
                 </div>
 
                 <div id="content" className="flex flex-col gap-2">

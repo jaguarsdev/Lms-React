@@ -1,13 +1,19 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
+import { isInCart } from '../../../../../redux/cart/helper/FuncHelper'
+ 
 import iconClock from '../../../assets/svgicon/iconClock.svg';
 import iconUser from '../../../assets/svgicon/iconUser.svg';
 import iconJalasat from '../../../assets/svgicon/iconJalasat.svg';
 
 const MapCourseDate = ({courseData}) => {
     // console.log(courseData)
-  
+
+    const state = useSelector(state => state.cartState);
+    const dispatch = useDispatch();
+    
     return (
         <>
             <div id="productContBox" className="flex flex-col p-1 xl:p-2 gap-2 bg-white shadow-lg dark:bg-white/30 rounded-lg">
@@ -43,12 +49,15 @@ const MapCourseDate = ({courseData}) => {
                             </ul>
                         </ul>
                     </div>
-                    <div className="bg-blue-600 py-1 rounded-md text-center font-bold w-full">
-                    <Link to={`/course/${courseData.id}`} className="text-white">ثبت نام و شروع دوره</Link>
+                    <div className="bg-blue-600 py-1 rounded-md text-center font-bold w-full mb-1">
+                    <Link to={`/course/${courseData.id}`} className="text-white">جزئیات بیشتر</Link>
                     </div>
-                    <div className="bg-blue-600 py-1 rounded-md text-center font-bold w-full">
-                    <button className="text-white">اضافه به سبد خرید</button>
-                    </div>
+                    
+                    {
+                        isInCart(state, courseData.id) ?
+                        <button className="font-bold" onClick={() => dispatch({type: "REMOVE_ITEM", payload: courseData})} ><div className="bg-white/0 border text-[#41c3d3] border-[#41c3d3] py-1 rounded-md text-center w-full">انصراف</div></button> :
+                        <button className="text-white font-bold" onClick={() => dispatch({type: "ADD_ITEM", payload: courseData})} ><div className="bg-[#41c3d3] py-1 rounded-md text-center font-bold w-full">ثبت نام</div></button>
+                    }
                 </div>
             </div>
         </>

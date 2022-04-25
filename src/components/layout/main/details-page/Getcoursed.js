@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import axios from 'axios';
-import { BASE_COURSES_API } from '../../../api/baseUrl';
+import { BASE_COURSES_API } from '../../../../module/api/baseUrl';
 
 import Dtail from './courseData';
 import DtailLoading from './courseDataLoading';

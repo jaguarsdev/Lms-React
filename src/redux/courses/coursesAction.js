@@ -1,5 +1,5 @@
 import axios from "axios"
-import { BASE_COURSES_API } from "../../components/api/baseUrl"
+import { BASE_COURSES_API } from "../../module/api/baseUrl"
 
 
 const fetchCoursesRequest = () => {

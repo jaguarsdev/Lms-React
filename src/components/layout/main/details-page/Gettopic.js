@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
-import { BASE_COURSES_API } from '../../../api/baseUrl';
+import { BASE_COURSES_API } from '../../../../module/api/baseUrl';
 
 import TopicData from './topicData'
 import TopicDataLoading from './topicDataLoading'

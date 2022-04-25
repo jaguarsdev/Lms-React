@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Disclosure } from '@headlessui/react'
 
-import Gettopic from './Gettopic';
+import Gettopic from './get/Gettopic';
 
 import leftarrow from '.././../assets/svgicon/leftarrow.svg';
 

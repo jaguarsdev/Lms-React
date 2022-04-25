@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import leftarrow from '.././../assets/svgicon/leftarrow.svg';
+import leftarrow from '../.././../assets/svgicon/leftarrow.svg';
 
 const TopicDataLoading = () => {
 

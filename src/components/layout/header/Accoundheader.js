@@ -18,7 +18,15 @@ const Accoundheader = () => {
                         <img src={profile_img} className="" alt="" />
                   </Menu.Button>
                     </div>
-                  <Menu.Items className="flex divide-y dark:divide-gray-600 absolute flex-col left-4 mt-2 shadow-xl bg-white dark:bg-black/90 rounded-lg overflow-hidden">
+                    <Transition
+                      enter="transition duration-100 ease-out"
+                      enterFrom="transform scale-95 opacity-0"
+                      enterTo="transform scale-100 opacity-100"
+                      leave="transition duration-75 ease-out"
+                      leaveFrom="transform scale-100 opacity-100"
+                      leaveTo="transform scale-95 opacity-0"
+                    >
+                  <Menu.Items className="flex min-w-32 divide-y dark:divide-gray-600 absolute flex-col left-4 mt-2 shadow-xl bg-white dark:bg-black/90 rounded-lg overflow-hidden">
                     <Menu.Item className="py-1 px-3 hover:bg-sky-200">
                       {({ active }) => (
                         <a
@@ -43,6 +51,7 @@ const Accoundheader = () => {
                       <span className="">خروج از حساب</span>
                     </Menu.Item>
                   </Menu.Items>
+                  </Transition>
                 </Menu>
             </div>
             <div id="logout" className="hidden md:block">

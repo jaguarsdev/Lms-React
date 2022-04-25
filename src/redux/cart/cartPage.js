@@ -10,8 +10,11 @@ const CartPage = () => {
     const state = useSelector(state => state.cartState)
     
     let total = state.selectedItems.map(item => +item.price_type_closed_price)
-    total = total.reduce((a, b) => a + b , 0)
-
+    total = total.reduce((a, b) => a + b , 0);
+    const price = total.toLocaleString();
+    
+    console.log(state.selectedItems.map(item => item.id ))
+    
     return (
          <>  
 
@@ -20,12 +23,19 @@ const CartPage = () => {
                 <div id="Mainbox" className="col-span-12  flex flex-col  overflow-y-scroll scroll1">
                     <div id="Maincontent" className="bg-white/50 dark:bg-black/25 p-2 mb-52">
                         <div className="grid md:grid-cols-12">
-                            <div className="md:col-span-8">
-                                {state.selectedItems.map(item => <Cart key={item.id} props={item} />)}
+                            <div className="md:col-span-8 flex flex-col gap-2">
+                                {state.selectedItems.map(item => <Cart key={item.id} props={item} /> )}
 
+                                <div className='flex flex-col items-center md:flex-row gap-2'>
+                                    <div className='bg-white/80 dark:bg-white/40 w-full rounded-lg p-3 shadow-md flex items-center justify-between'>
+                                        <p className='px-5'><span className='font-bold' > مجموع دوره ها : </span>{state.itemsCounter}</p>
+                                        <p className='px-5'><span className='font-bold' > جمع پرداختی : </span> { price } تومان </p>
+                                    </div>
+                                    <button className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
+                                        <div className="bg-[#41c3d3] hover:bg-[#239dad] py-3 md:px-12 rounded-md text-center font-bold w-full"> پرداخت </div>
+                                    </button>
+                                </div>
 
-                                <div>total = {total} </div>
-                                <div>counter = {state.itemsCounter} </div>
                             </div>
                         </div>
 

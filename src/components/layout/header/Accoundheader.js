@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, Transition } from '@headlessui/react'
+import { Link } from 'react-router-dom';
 
+import AuthService from '../../../module/authentication/auth.service'
 import Darkandlight from './Darkandlight';
 
 import profile_img from '../assets/images/profile.jpg'
@@ -8,10 +10,30 @@ import profile_img from '../assets/images/profile.jpg'
 
 
 const Accoundheader = () => {
+  const [currentUser, setCurrentUser] = useState(undefined);
+
+  const logOut = () => {
+    AuthService.logout();
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    const user = AuthService.getCurrentUser();
+
+    if (user) {
+      setCurrentUser(user);
+    }
+  }, []);
+
+
+
+
     return (
-        <div id="account" className="flex gap-3 items-center">
+      <div id="account" className="flex gap-3 items-center">
             <Darkandlight />
-            <div id="login" className="md:hidden">
+
+            {currentUser && (
+            <div id="login" >
                 <Menu>
                     <div id="avatar" className="flex items-center">
                   <Menu.Button className="w-9 h-9 rounded-full mr-3 ring-2 ring-white overflow-hidden">
@@ -26,7 +48,7 @@ const Accoundheader = () => {
                       leaveFrom="transform scale-100 opacity-100"
                       leaveTo="transform scale-95 opacity-0"
                     >
-                  <Menu.Items className="flex min-w-32 divide-y dark:divide-gray-600 absolute flex-col left-4 mt-2 shadow-xl bg-white dark:bg-black/90 rounded-lg overflow-hidden">
+                  <Menu.Items className=" flex min-w-32 divide-y dark:divide-gray-600 absolute flex-col left-4 mt-2 shadow-xl bg-white dark:bg-black/90 rounded-lg overflow-hidden">
                     <Menu.Item className="py-1 px-3 hover:bg-sky-200">
                       {({ active }) => (
                         <a
@@ -47,18 +69,23 @@ const Accoundheader = () => {
                         </a>
                       )}
                     </Menu.Item>
-                    <Menu.Item className="py-1 px-3 text-red-500 font-medium hover:bg-sky-200">
-                      <span className="">خروج از حساب</span>
+                    {currentUser && (
+                    <Menu.Item onClick={logOut} className="py-1 px-3 text-red-500 font-medium hover:bg-sky-200">
+                      <button className="">خروج از حساب</button>
                     </Menu.Item>
+                    )}
                   </Menu.Items>
                   </Transition>
                 </Menu>
             </div>
-            <div id="logout" className="hidden md:block">
+            )}
+
+
+            <div id="logout" >
                 <a href="" className="">ثبت نام</a>
-                <a href="" className="bg-blue-600 px-4 py-1 rounded-md mr-2 text-white shadow-lg">ورود</a>
+                <Link to="/login" className="bg-blue-600 px-4 py-1 rounded-md mr-2 text-white shadow-lg">ورود</Link>
             </div>
-        </div>
+      </div>
     );
 };
 

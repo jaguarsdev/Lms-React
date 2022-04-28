@@ -1,6 +1,7 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+// import authService from './module/authentication/auth.service'
 import Rootlayout from './components/layout/Rootlayout'
 import GetCoursed from './components/layout/main/details-page/get/Getcoursed';
 import CartPage from './redux/cart/cartPage';
@@ -13,6 +14,7 @@ function App() {
           <Route path="/cart" element={<CartPage />} />
           <Route path="/course/:id" element={<GetCoursed />} />
           <Route path="/" element={<Rootlayout />} />
+          <Route path="/login" element={<Rootlayout />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </Provider>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { BASE_COURSES_API } from '../../../../../module/api/baseUrl';
+import authHeader from '../../../../../module/authentication/auth-header'
 
 import LessonData from '../lessonData';
 import LessonDataLoading from '../databoxLoading/lessonDataLoading';
@@ -12,9 +13,7 @@ const Getlessons = ({courseId}) => {
 
     useEffect(() => {
         // Get Lessons Data
-        axios.get(`${BASE_COURSES_API}sfwd-lessons?course=${courseId}`, {
-            headers: {'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvdGVzdDEubG1zYXZhLmlyIiwiaWF0IjoxNjUwNTQ5NTY1LCJuYmYiOjE2NTA1NDk1NjUsImV4cCI6MTY1MTE1NDM2NSwiZGF0YSI6eyJ1c2VyIjp7ImlkIjoiMSJ9fX0.DLxC6mtcRjQv_DuAh2NA2fEPk_v3m1tKYg1CYLS27iQ'}
-        })
+        axios.get(`${BASE_COURSES_API}sfwd-lessons?course=${courseId}`, {headers: authHeader() })
             .then(res => setData({...Data, D: res.data}))
             .catch(error => setData({...Data, E: true}))
             // setData({...Data, D: res.data})
@@ -22,6 +21,7 @@ const Getlessons = ({courseId}) => {
     }, [courseId]); 
 
 
+    console.log(`🚀 ~ file: Getlessons.js ~ line 27 ~ Getlessons ~ Data`, Data.E)
     return (
         <>
         {!Data.D ? 

@@ -15,6 +15,7 @@ function App() {
           <Route path="/course/:id" element={<GetCoursed />} />
           <Route path="/" element={<Rootlayout />} />
           <Route path="/login" element={<Rootlayout />} />
+          <Route path="/register" element={<Rootlayout />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </Provider>

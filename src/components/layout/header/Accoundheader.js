@@ -80,11 +80,12 @@ const Accoundheader = () => {
             </div>
             )}
 
-
+            {!currentUser && (
             <div id="logout" >
-                <a href="" className="">ثبت نام</a>
+                <Link to="/register" className="">ثبت نام</Link>
                 <Link to="/login" className="bg-blue-600 px-4 py-1 rounded-md mr-2 text-white shadow-lg">ورود</Link>
             </div>
+            )}
       </div>
     );
 };

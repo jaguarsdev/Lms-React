@@ -21,7 +21,6 @@ const Getlessons = ({courseId}) => {
     }, [courseId]); 
 
 
-    console.log(`🚀 ~ file: Getlessons.js ~ line 27 ~ Getlessons ~ Data`, Data.E)
     return (
         <>
         {!Data.D ? 

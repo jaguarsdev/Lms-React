@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { useSelector } from 'react-redux';
-
+import PaymentControler from '../payment/requsetPay'
 import Rootheader from '../../components/layout/header/Rootheader';
 import Cart from './cart';
 
@@ -12,8 +12,36 @@ const CartPage = () => {
     let total = state.selectedItems.map(item => +item.price_type_closed_price)
     total = total.reduce((a, b) => a + b , 0);
     const price = total.toLocaleString();
+
+    // const coursrId = state.selectedItems.map(item => item.acf.idwo )
+    // const productId = state.selectedItems.map(item => item.id )
     
-    console.log(state.selectedItems.map(item => item.id ))
+    // console.log(coursrId,productId)
+
+    // const sum = () => {
+    // }
+    const useremail = JSON.parse(localStorage.getItem("user")).user_email;
+    // const totalPrice = total;
+    // handlePay(useremail,totalPrice)
+
+    const handlePay = async (useremail,total) => {
+
+        try {
+          await PaymentControler.requestToPay(total, useremail).then(
+            () => {
+            //   navigate("/home");
+            //   window.location.reload();
+            },
+            (error) => {
+              console.log(error);
+            }
+            );
+          } catch (err) {
+            console.log(err);
+        }
+      };
+
+
     
     return (
          <>  
@@ -31,7 +59,7 @@ const CartPage = () => {
                                         <p className='px-5'><span className='font-bold' > مجموع دوره ها : </span>{state.itemsCounter}</p>
                                         <p className='px-5'><span className='font-bold' > جمع پرداختی : </span> { price } تومان </p>
                                     </div>
-                                    <button className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
+                                    <button onClick={() => handlePay(useremail,price)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
                                         <div className="bg-[#41c3d3] hover:bg-[#239dad] py-3 md:px-12 rounded-md text-center font-bold w-full"> پرداخت </div>
                                     </button>
                                 </div>

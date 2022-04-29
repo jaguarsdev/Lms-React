@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
 import { Link } from 'react-router-dom';
-import { isInCart } from '../../../../../redux/cart/helper/FuncHelper'
+import { isInCart } from '../../../../../module/cart/helper/FuncHelper'
  
 import iconClock from '../../../assets/svgicon/iconClock.svg';
 import iconUser from '../../../assets/svgicon/iconUser.svg';

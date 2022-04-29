@@ -4,7 +4,8 @@ import store from './redux/store';
 // import authService from './module/authentication/auth.service'
 import Rootlayout from './components/layout/Rootlayout'
 import GetCoursed from './components/layout/main/details-page/get/Getcoursed';
-import CartPage from './redux/cart/cartPage';
+import CartPage from './module/cart/cartPage';
+import VerifyPage from './components/layout/VerifyPage'
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/" element={<Rootlayout />} />
           <Route path="/login" element={<Rootlayout />} />
           <Route path="/register" element={<Rootlayout />} />
+          <Route path="/pay/*" element={<VerifyPage />} />
           <Route path="/*" element={<Navigate to="/" />} />
         </Routes>
       </Provider>

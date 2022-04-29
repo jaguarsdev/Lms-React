@@ -1,39 +1,27 @@
 import axios from "axios";
 
-import { BASE_AUTH } from '../api/baseUrl'
+import { BASE_AUTH, BASE } from '../api/baseUrl'
 
 const API_URL =  `${BASE_AUTH}token`;
 
-const signup = () => {
-  return axios
-    .post("https://test1.lmsava.ir/api/get_nonce?controller=user&method=register")
+
+const signup = async (username, email, password) => {
+  return await axios
+    .post(`${BASE}?rest_route=/simple-jwt-login/v1/users&AUTH_KEY=abs456`, {
+      "username": `${username}`,
+      "email": `${email}`,
+      "password": `${password}`,
+  })
     .then((response) => {
-      if (response.data) {
+      if (response) {
+        // console.log(`🚀 ~ response`, response)
         // localStorage.setItem("user", JSON.stringify(response.data));
-        console.log(response.data)
+        
       }
 
       return response.data;
     });
 };
-
-
-// const signup = (username, email, password) => {
-//   getWpnonce()
-//   return axios
-//     .post(API_URL + "/signup", {
-//       username,
-//       email,
-//       password,
-//     })
-//     .then((response) => {
-//       if (response.data.accessToken) {
-//         localStorage.setItem("user", JSON.stringify(response.data));
-//       }
-
-//       return response.data;
-//     });
-// };
 
 const login = (username, password) => {
   return axios

@@ -1,5 +1,5 @@
-// import React, { useState } from "react";
-// import axios from "axios";
+import React, { useState } from "react";
+import axios from "axios";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup"
 
@@ -7,8 +7,8 @@ import AuthService from "../authentication/auth.service";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const navigate = useNavigate();
 

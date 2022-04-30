@@ -1,40 +1,30 @@
 import axios from "axios"
 
-import { HOST } from "../api/baseUrl"
+import { PAYMENT } from "../api/baseUrl"
 
 
 
+// url: `${PAYMENT}?amount=${price}&email=${email}&callback_url=lmsava.ir`,
 const requestToPay = (price, email) => {
-// console.log(`🚀 ~ email`, email)
-// console.log(`🚀 ~ price`, price)
 
-    let data = JSON.stringify({
-        "merchant_id": "f6c78c4f-d729-408c-abb8-eebe682a6995",
-        "amount": `${price}`,
-        "description": "خرید از سیستم آموزشی",
-        "callback_url": `${HOST}`,
-        "email": `${email}`
-    });
-    
-    let config = {
-        method: 'post',
-        url: 'https://api.zarinpal.com/pg/v4/payment/request.json',
-        headers: { 
-             'Content-Type': 'application/json'
-        },
-        data : data
-    };
+let data = '';
 
-
-    return axios(config)
-    .then((response) => {
-        console.log(JSON.stringify(response.data));
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+let config = {
+     method: 'post',
+     url: `https://test2.lmsava.ir/request.php?amount=${price}&email=${email}&callback_url=lmsava.ir`,
+     headers: { },
+     data : data
+    };    
+return axios(config)
+.then((response) => {
+     const requestRes = response.data;
+})
+.catch((error) => {
+     console.log(error);
+});
 
 }
+
 
 
 

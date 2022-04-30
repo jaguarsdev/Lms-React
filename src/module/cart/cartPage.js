@@ -59,7 +59,7 @@ const CartPage = () => {
                                         <p className='px-5'><span className='font-bold' > مجموع دوره ها : </span>{state.itemsCounter}</p>
                                         <p className='px-5'><span className='font-bold' > جمع پرداختی : </span> { price } تومان </p>
                                     </div>
-                                    <button onClick={() => handlePay(useremail,price)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
+                                    <button onClick={() => handlePay(useremail,total)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
                                         <div className="bg-[#41c3d3] hover:bg-[#239dad] py-3 md:px-12 rounded-md text-center font-bold w-full"> پرداخت </div>
                                     </button>
                                 </div>

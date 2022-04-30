@@ -7,6 +7,7 @@ import Cart from './cart';
 
 const CartPage = () => {
 
+
     const state = useSelector(state => state.cartState)
     
     let total = state.selectedItems.map(item => +item.price_type_closed_price)
@@ -29,9 +30,10 @@ const CartPage = () => {
         try {
           await PaymentControler.requestToPay(total, useremail).then(
             () => {
-            //   navigate("/home");
-            //   window.location.reload();
-            },
+                //   window.location.reload();
+                const payKey = JSON.parse(localStorage.getItem("payKey")).authority;
+                window.location.href = `https://www.zarinpal.com/pg/StartPay/${payKey}`; 
+        },
             (error) => {
               console.log(error);
             }

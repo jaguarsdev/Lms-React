@@ -11,13 +11,13 @@ let data = '';
 
 let config = {
      method: 'post',
-     url: `https://test2.lmsava.ir/request.php?amount=${price}&email=${email}&callback_url=lmsava.ir`,
+     url: `${PAYMENT}?amount=${price}&email=${email}`,
      headers: { },
      data : data
     };    
 return axios(config)
 .then((response) => {
-     const requestRes = response.data;
+     localStorage.setItem("payKey", JSON.stringify(response.data.data));
 })
 .catch((error) => {
      console.log(error);

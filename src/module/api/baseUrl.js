@@ -1,6 +1,6 @@
 const HOST = "http://localhost:3000/";
 
-const PAYMENT = "http://pay.lmsava.ir";
+const PAYMENT = "https://test2.lmsava.ir/request.php";
 
 const BASE = "https://test1.lmsava.ir/";
 

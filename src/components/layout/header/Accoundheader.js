@@ -25,6 +25,17 @@ const Accoundheader = () => {
     }
   }, []);
 
+  const  pleaseLogin = {
+    token: "pleaseLogin",
+    user_display_name: "pleaseLogin",
+    user_email: "pleaseLogin@pleaseLogin.pleaseLogin",
+    user_id: "pleaseLogin",
+    user_nicename: "pleaseLogin"
+  }
+  if(currentUser === undefined){
+    localStorage.setItem("pleaseLogin", JSON.stringify(pleaseLogin));
+  } 
+
 
 
 

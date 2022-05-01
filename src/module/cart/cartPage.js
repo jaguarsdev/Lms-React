@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { useSelector } from 'react-redux';
 import PaymentControler from '../payment/requsetPay'
 import Rootheader from '../../components/layout/header/Rootheader';
 import Cart from './cart';
 
+
+import AuthService from '../authentication/auth.service'
+
 const CartPage = () => {
+    const [currentUser, setCurrentUser] = useState(undefined);
+
+    useEffect(() => {
+        const user = AuthService.getCurrentUser();
+    
+        if (user) {
+          setCurrentUser(user);
+        }
+      }, []);
 
 
     const state = useSelector(state => state.cartState)
@@ -17,18 +29,14 @@ const CartPage = () => {
     const coursrId = state.selectedItems.map(item => item.acf.idwo )
     // const productId = state.selectedItems.map(item => item.id )
     
-    // console.log(coursrId,productId)
-
-    // const sum = () => {
-    // }
-    const useremail = JSON.parse(localStorage.getItem("user")).user_email;
-    const userId = JSON.parse(localStorage.getItem("user")).user_id;
-    // const productid = JSON.parse(localStorage.getItem("user")).user_id;
-    // const totalPrice = total;
-    // handlePay(useremail,totalPrice)
+    // console.log(currentUser)
+    
+    const useremail = (currentUser ? JSON.parse(localStorage.getItem("user")).user_email : JSON.parse(localStorage.getItem("pleaseLogin")).user_email)
+    const userId = (currentUser ? JSON.parse(localStorage.getItem("user")).user_id : JSON.parse(localStorage.getItem("pleaseLogin")).user_id)
+    
+    console.log(useremail)
 
     const handlePay = async (useremail, total, userId, productId) => {
-
         try {
           await PaymentControler.requestToPay(total, useremail, userId, productId).then(
             () => {

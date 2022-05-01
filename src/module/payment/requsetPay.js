@@ -8,7 +8,7 @@ const requestToPay = (price, email, stId, productId) => {
 
     let data = '';
 
-    const Pyment_Back = PAYMENT_BACK + `?productId=${productId}&stId=${stId}`
+    const Pyment_Back = PAYMENT_BACK + `?productId=${productId}&stId=${stId}&amount=${price}`
     console.log(`🚀 ~ Pyment_Back`, Pyment_Back)
 
     let config = {
@@ -31,7 +31,7 @@ const requestToPay = (price, email, stId, productId) => {
 
 
 
-const requestToVerifyPay = () => {
+const requestToVerifyPay = (amount, Authority) => {
 
     let data = '';
 
@@ -40,7 +40,7 @@ const requestToVerifyPay = () => {
 
     let config = {
         method: 'post',
-        url: `${PAYMENTV}?amount=10000&authority=A00000000000000000000000000337925605`,
+        url: `${PAYMENTV}?amount=${amount}0&authority=${Authority}`,
         headers: { },
         data : data
         };    

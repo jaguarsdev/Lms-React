@@ -10,3 +10,4 @@ const VerifyPay = () => {
 };
 
 export default VerifyPay;
+

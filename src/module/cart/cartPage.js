@@ -14,7 +14,7 @@ const CartPage = () => {
     total = total.reduce((a, b) => a + b , 0);
     const price = total.toLocaleString();
 
-    // const coursrId = state.selectedItems.map(item => item.acf.idwo )
+    const coursrId = state.selectedItems.map(item => item.acf.idwo )
     // const productId = state.selectedItems.map(item => item.id )
     
     // console.log(coursrId,productId)
@@ -22,13 +22,15 @@ const CartPage = () => {
     // const sum = () => {
     // }
     const useremail = JSON.parse(localStorage.getItem("user")).user_email;
+    const userId = JSON.parse(localStorage.getItem("user")).user_id;
+    // const productid = JSON.parse(localStorage.getItem("user")).user_id;
     // const totalPrice = total;
     // handlePay(useremail,totalPrice)
 
-    const handlePay = async (useremail,total) => {
+    const handlePay = async (useremail, total, userId, productId) => {
 
         try {
-          await PaymentControler.requestToPay(total, useremail).then(
+          await PaymentControler.requestToPay(total, useremail, userId, productId).then(
             () => {
                 //   window.location.reload();
                 const payKey = JSON.parse(localStorage.getItem("payKey")).authority;
@@ -61,7 +63,7 @@ const CartPage = () => {
                                         <p className='px-5'><span className='font-bold' > مجموع دوره ها : </span>{state.itemsCounter}</p>
                                         <p className='px-5'><span className='font-bold' > جمع پرداختی : </span> { price } تومان </p>
                                     </div>
-                                    <button onClick={() => handlePay(useremail,total)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
+                                    <button onClick={() => handlePay(useremail,total,userId,coursrId)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
                                         <div className="bg-[#41c3d3] hover:bg-[#239dad] py-3 md:px-12 rounded-md text-center font-bold w-full"> پرداخت </div>
                                     </button>
                                 </div>

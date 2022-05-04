@@ -1,14 +1,14 @@
-const HOST = "http://localhost:3000/";
+const HOST = "https://a.lmsava.ir/";
 
 const PAYMENT = "https://test2.lmsava.ir/request.php";
 
 const PAYMENTV = "https://test2.lmsava.ir/verify.php";
 
-const MERCHENT = "f6c78c4f-d729-408c-abb8-eebe682a6995";
+const MERCHENT = "a49f690a-559f-11e8-baf3-005056a205be";
 
-const PAYMENT_BACK = "http://localhost:3000/pay/";
+const PAYMENT_BACK = `${HOST}pay/`;
 
-const BASE = "https://test1.lmsava.ir/";
+const BASE = "https://amanage.lmsava.ir/";
 
 const BASE_COURSES_API = `${BASE}wp-json/ldlms/v2/`;
 

@@ -25,7 +25,7 @@ const addOrder = (productId, stId, amount) => {
 
     let config = {
         method: 'post',
-        url: 'https://test1.lmsava.ir/wp-json/wc/v3/orders?consumer_key=ck_2764a950d4ffa6f6900958205f3a36f17603e090&consumer_secret=cs_cc3c45c80161941ee0215f5e59715f768e1a8f82',
+        url: 'https://test1.lmsava.ir/wp-json/wc/v3/orders?consumer_key=ck_e54a3114686630bf72d7e35e5ce40c67b47a986e&consumer_secret=cs_52d4b51d7d52fdd468df48694c90b286e3805b08',
         data: { 
             '': '', 
             'Content-Type': 'application/json'

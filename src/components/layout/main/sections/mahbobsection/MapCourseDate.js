@@ -34,19 +34,16 @@ const MapCourseDate = ({courseData}) => {
 
                 <div id="option" className="flex flex-col">
                     <div id="ProInfo">
-                        <ul>
-                            <ul className="p-2 flex flex-wrap justify-center gap-2  cursor-help">
-                                <li className="flex hover:text-gray-300">
-                                    <img src={iconClock} className="w-4 h-4 ml-1" alt="iconClock" />
-                                    {courseData.acf.hours}</li>
-                                <li className="flex hover:text-gray-300">
-                                    <img src={iconJalasat} className="w-4 h-4" alt="iconJalasat" />
-                                    {courseData.acf.sessions}</li> 
-                                <li className="flex hover:text-gray-300">
-                                    <img src={iconUser} className="w-4 h-4" alt="iconUser" />
-                                    {courseData.acf.users}</li>
-                                
-                            </ul>
+                        <ul className="p-2 flex flex-wrap justify-center gap-2  cursor-help">
+                            <li className="flex hover:text-gray-300">
+                                <img src={iconClock} className="w-4 h-4 ml-1" alt="iconClock" />
+                                {courseData.acf.hours}</li>
+                            <li className="flex hover:text-gray-300">
+                                <img src={iconJalasat} className="w-4 h-4 ml-1" alt="iconJalasat" />
+                                {courseData.acf.sessions}</li> 
+                            <li className="flex hover:text-gray-300">
+                                <img src={iconUser} className="w-6 h-5 ml-1" alt="iconUser" />
+                                {courseData.acf.users}</li>
                         </ul>
                     </div>
                     <div className="bg-blue-600 py-1 rounded-md text-center font-bold w-full mb-1">

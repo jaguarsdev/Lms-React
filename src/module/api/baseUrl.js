@@ -1,4 +1,4 @@
-const HOST = "https://a.lmsava.ir/";
+const HOST = "https://e.lmsava.ir/";
 
 const PAYMENT = "https://test2.lmsava.ir/request.php";
 
@@ -8,7 +8,7 @@ const MERCHENT = "a49f690a-559f-11e8-baf3-005056a205be";
 
 const PAYMENT_BACK = `${HOST}pay/`;
 
-const BASE = "https://amanage.lmsava.ir/";
+const BASE = "https://emanage.lmsava.ir/";
 
 const BASE_COURSES_API = `${BASE}wp-json/ldlms/v2/`;
 

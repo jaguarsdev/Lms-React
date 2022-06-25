@@ -24,14 +24,21 @@ const fetchCoursesFailure = error => {
 export const fetchCourses = () => {
     return (dispatch) => {
         dispatch(fetchCoursesRequest());
-        axios.get(`${BASE_COURSES_API}sfwd-courses`)
-            .then(response => {
-                const courses = response.data;
-                dispatch(fetchCoursesSuccess(courses))
-            })
-            .catch(error => {
-                const errorMsg = error.message
-                dispatch(fetchCoursesFailure(errorMsg))
-            })
+        
+        var config = {
+        method: 'get',
+        url: `${BASE_COURSES_API}courses?populate=*`,
+        headers: { }
+        };
+
+        axios(config)
+        .then(function (response) {
+            const courses = response.data;
+            dispatch(fetchCoursesSuccess(courses))
+        })
+        .catch(function (error) {
+            const errorMsg = error.message
+            dispatch(fetchCoursesFailure(errorMsg))
+        });
     }
 }

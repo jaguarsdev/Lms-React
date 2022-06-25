@@ -15,7 +15,7 @@ const TopicData = ({topicData}) => {
     // console.log(topicData)
 
     return (
-        
+
         <Transition className=" w-full"
         enter="transition duration-100 ease-out"
         enterFrom="transform scale-95 opacity-0"
@@ -32,12 +32,12 @@ const TopicData = ({topicData}) => {
                         <Disclosure.Button>
                             <div className='flex items-center'>
                                 <img src={leftarrow} className="w-5 h-5 ml-1" alt="leftarrow" />
-                                <h2 className="text-black dark:text-white">{topicData.title.rendered}</h2>
+                                <h2 className="text-black dark:text-white">{topicData.LessonName}</h2>
                             </div>
                         </Disclosure.Button>
                         <Disclosure.Panel>
                             <div className="p-2 text-gray-800 dark:text-white/80">
-                                <p className="border border-dashed border-gray-400 p-2 rounded-md " dangerouslySetInnerHTML={{ __html: topicData.content.rendered }} />
+                                <p className="border border-dashed border-gray-400 p-2 rounded-md " dangerouslySetInnerHTML={{ __html: topicData.LessonContent }} />
                                 
                                 <div className="mt-2">
                                     <Tab.Group>
@@ -67,7 +67,7 @@ const TopicData = ({topicData}) => {
                                                         <video
                                                             controls
                                                             preload="none"
-                                                            src={topicData.acf.video}
+                                                            src={"topicData.acf.video"}
                                                             // poster="https://media-files.vidstack.io/poster-seo.png"
                                                         />
                                                     </Video>
@@ -90,7 +90,7 @@ const TopicData = ({topicData}) => {
                                                             className="w-full"
                                                             controls
                                                             preload="none"
-                                                            src={topicData.acf.mp3}
+                                                            src={"topicData.acf.mp3"}
                                                         />
                                                     </Audio>
                                                 </MediaVisibility>
@@ -98,7 +98,7 @@ const TopicData = ({topicData}) => {
                                                 </Media>
                                             </Tab.Panel>
                                             <Tab.Panel>
-                                                <a href={topicData.acf.document} download >
+                                                <a href={"topicData.acf.document"} download >
                                                     <div className="hover:bg-[#41c3d3] hover:text-white text-[#41c3d3] font-semibold border border-[#41c3d3] px-5 py-1 rounded-lg w-11/12 m-auto text-center">
                                                         دانلود
                                                     </div>

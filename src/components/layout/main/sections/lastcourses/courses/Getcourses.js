@@ -20,6 +20,8 @@ const GetCourses = () => {
         
     }, [dispatch])
 
+    const DATA_OF_COURSE = coursesState.courses.data
+
 
     return (
         <Swiper
@@ -51,9 +53,9 @@ const GetCourses = () => {
                 <SwiperSlide><MapCourseDateLoading /></SwiperSlide> :
                 coursesState.error ?
                     <p>Somethin went wrong</p> :
-                    coursesState.courses.map(course => 
-                    <SwiperSlide>
-                        <MapCourseDate key={course.id} courseData={course} />
+                    DATA_OF_COURSE?.map(course => 
+                    <SwiperSlide key={Math.random()}>
+                        <MapCourseDate key={course.id} keyid={course.id} courseData={course.attributes} />
                     </SwiperSlide>
                     
                     )

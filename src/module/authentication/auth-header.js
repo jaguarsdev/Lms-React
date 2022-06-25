@@ -1,9 +1,10 @@
 function authHeader() {
   const user = JSON.parse(localStorage.getItem("user"));
 
-  if (user && user.token) {
+  if (user && user.jwt) {
     // return { Authorization: 'Bearer ' + user.accessToken };
-    return { Authorization: 'Bearer ' + user.token };
+    // console.log("hi")
+    return { Authorization: `Bearer ${user.jwt}` };
   } else {
     return {};
   }

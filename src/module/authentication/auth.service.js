@@ -2,7 +2,7 @@ import axios from "axios";
 
 import { BASE_AUTH, BASE } from '../api/baseUrl'
 
-const API_URL =  `${BASE_AUTH}token`;
+const API_URL =  `${BASE_AUTH}auth/local`;
 
 
 const signup = async (username, email, password) => {
@@ -26,11 +26,11 @@ const signup = async (username, email, password) => {
 const login = (username, password) => {
   return axios
     .post(API_URL , {
-      "username": `${username}`,
+      "identifier": `${username}`,
       "password": `${password}`
   })
     .then((response) => {
-      if (response.data.token) {
+      if (response.data.jwt) {
         localStorage.setItem("user", JSON.stringify(response.data));
       }
 

@@ -14,7 +14,7 @@ const Slideside = () => {
                                 <a href="/"><li className=""><div id="sideSlidBox" className="shadow-lg flex justify-center items-center p-6 md:p-11 rounded-lg bg-gradient-to-br from-orange-300 via-orange-400 to-orange-600">
                                     <div className="right py-2 flex justify-center flex-col md:col-span-3 inline-block">
                                         <h3 className="text-lg md:text-2xl font-bold text-gray-900">
-            شعبه قم
+            ازدواج
                                         </h3>
                                     </div>
                                     {/* <div className="left md:flex justify-center flex-col md:col-span-1 inline-block">
@@ -25,7 +25,7 @@ const Slideside = () => {
                                 <a href="/"><li className=""><div id="sideSlidBox" className="shadow-lg flex justify-center items-center p-6 md:p-11 rounded-lg bg-gradient-to-br from-cyan-300 via-cyan-400 to-cyan-600">
                                     <div className="right py-2 flex justify-center flex-col md:col-span-2 inline-block">
                                         <h3 className="text-lg md:text-2xl font-bold text-gray-900">
-            شعبه تهران
+            سبک زندگی
                                         </h3>
                                     </div>
                                     {/* <div className="left md:flex justify-center flex-col md:col-span-1 inline-block">
@@ -36,7 +36,7 @@ const Slideside = () => {
                                 <a href="/"><li className=""><div id="sideSlidBox" className="shadow-lg flex justify-center items-center p-6 md:p-11 rounded-lg bg-gradient-to-br from-purple-300 via-purple-400 to-purple-600">
                                     <div className="right py-2 flex justify-center flex-col md:col-span-3 inline-block">
                                         <h3 className="text-lg md:text-2xl font-bold text-gray-900">
-            شعبه اصفهان
+            فرزند آوری
                                         </h3>
                                     </div>
                                     {/* <div className="left md:flex justify-center flex-col md:col-span-1 inline-block">
@@ -47,7 +47,7 @@ const Slideside = () => {
                                 <a href="/"><li className=""><div id="sideSlidBox" className="shadow-lg flex justify-center items-center p-6 md:p-11 rounded-lg bg-gradient-to-br from-yellow-300 via-yellow-400 to-yellow-600">
                                     <div className="right py-2 flex justify-center flex-col md:col-span-3 inline-block">
                                         <h3 className="text-lg md:text-2xl font-bold text-gray-900">
-            شعبه شیراز
+            تربیت فرزند
                                         </h3>
                                     </div>
                                     {/* <div className="left md:flex justify-center flex-col md:col-span-1 inline-block">

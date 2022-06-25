@@ -13,12 +13,17 @@ const Getlessons = ({courseId}) => {
 
     useEffect(() => {
         // Get Lessons Data
-        axios.get(`${BASE_COURSES_API}sfwd-lessons?course=${courseId}`, {headers: authHeader() })
-            .then(res => setData({...Data, D: res.data}))
+        axios.get(`${BASE_COURSES_API}courses/${courseId}?populate=lessons`, {
+            headers: authHeader() 
+        })
+            .then(res => setData({...Data, D: res.data.data.attributes.lessons.data}))
             .catch(error => setData({...Data, E: true}))
             // setData({...Data, D: res.data})
 
     }, [courseId]); 
+    
+    const DATA_OF_LESSON = Data.D
+    // console.log(authHeader())
 
 
     return (
@@ -27,10 +32,10 @@ const Getlessons = ({courseId}) => {
             <LessonDataLoading /> :
                 Data.E ?
                 <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
-                Data.D.map(lesson => <LessonData key={lesson.id} lessonData={lesson} courseId={courseId} />)
-            }
-                        
-        
+                DATA_OF_LESSON?.map(lesson =>
+                <LessonData key={lesson.id} lessonData={lesson} courseId={courseId} />
+                )
+            }        
         </>
     );
 };

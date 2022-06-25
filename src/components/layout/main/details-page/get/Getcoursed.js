@@ -17,12 +17,13 @@ const GetCoursed = () => {
 
     useEffect(() => {
         // Get Course Data
-        axios.get(`${BASE_COURSES_API}sfwd-courses/${pageid}`)
+        axios.get(`${BASE_COURSES_API}courses/${pageid}?populate=CourseImage`)
                 .then(res => setData({...Data, D: res.data}))
                 .catch(error => setData({...Data, E: true}))
 
     }, [pageid]);
-    // console.log(Data.D)
+    // console.log(Data.D.data)
+
     return (
         <>  
 
@@ -36,7 +37,7 @@ const GetCoursed = () => {
                                 <DtailLoading /> :
                                     Data.E ?
                                     <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
-                                    <Dtail props={Data.D} />
+                                    <Dtail props={Data.D.data.attributes} />
                                 }
                                 <Getlessons courseId={pageid} />
                             </div>

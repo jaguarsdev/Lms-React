@@ -5,12 +5,13 @@ import { BASE_AUTH, BASE } from '../api/baseUrl'
 const API_URL =  `${BASE_AUTH}auth/local`;
 
 
-const signup = async (username, email, password) => {
+const signup = async (username, email, password, phoneNumber) => {
   return await axios
-    .post(`${BASE}?rest_route=/simple-jwt-login/v1/users&AUTH_KEY=abs456`, {
+    .post(`${BASE}auth/local/register`, {
       "username": `${username}`,
       "email": `${email}`,
       "password": `${password}`,
+      "phoneNumber": `${phoneNumber}`,
   })
     .then((response) => {
       if (response) {

@@ -29,10 +29,10 @@ const Signup = () => {
   const handleSignup = async (values) => {
     console.log(values)
     try {
-      await AuthService.signup(values.username, values.email, values.password).then(
+      await AuthService.signup(values.username, values.email, values.password, values.phoneNumber).then(
         (response) => {
           // check for token and user already exists with 200
-          //   console.log("Sign up successfully", response);
+            console.log("Sign up successfully", response);
           navigate("/home");
           window.location.reload();
         },
@@ -51,12 +51,14 @@ const Signup = () => {
     username: '',
     email: '',
     password: '',
+    phoneNumber: '',
   }
   
   const validationSchema = Yup.object().shape({
     username: Yup.string().matches(/^[aA-zZ\s]+$/, "Only alphabets are allowed for this field ").required('ضروری'),
     email: Yup.string().email('لطفا ایمیل معتبر وارد کنید').required('ضروری'),
-    password: Yup.string().required('ضروری')
+    password: Yup.string().required('ضروری'),
+    phoneNumber: Yup.string().required('ضروری')
   })
   
 
@@ -72,11 +74,26 @@ const Signup = () => {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500
           "
           control="input"
-          id="inputme"
+          id="inputmeusername"
           name="username"
           label="username"
           placeholder="نام کاربری"
           type="text"
+        />
+        <Field
+          className="py-2 px-4 rounded-lg shadow-md bg-white 
+          mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md text-sm shadow-sm placeholder-slate-400
+      focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500
+      disabled:bg-slate-50 disabled:text-slate-500 disabled:border-slate-200 disabled:shadow-none
+      invalid:border-pink-500 invalid:text-pink-600
+      focus:invalid:border-pink-500 focus:invalid:ring-pink-500
+          "
+          control="input"
+          id="inputmephoneNumber"
+          name="phoneNumber"
+          label="phoneNumber"
+          placeholder="تلفن همراه"
+          type="number"
         />
         
         <Field
@@ -88,7 +105,7 @@ const Signup = () => {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500
           "
           control="input"
-          id="inputme"
+          id="inputmeemail"
           name="email"
           label="email"
           placeholder="ایمیل"
@@ -103,7 +120,7 @@ const Signup = () => {
       focus:invalid:border-pink-500 focus:invalid:ring-pink-500
           "
           control="input"
-          id="inputme"
+          id="inputmepassword"
           name="password"
           label="password"
           placeholder="رمز عبور"

@@ -18,7 +18,8 @@ const Gettopic = ({lessonId, courseId}) => {
         // Get Lessons Data
         const getLessonsID = ()=>{
             axios.get(`${BASE_COURSES_API}lessons/${lessonId}?populate=*`, {headers: authHeader() })
-            .then(res =>setData({...Data, D: res.data.data.attributes.lessons})
+            .then(res =>setData({...Data, D: res.data.data.attributes.lessons })
+            // .then(res =>setData({...Data, D: res.data.data.attributes.lessons||res.data[0].msg })
             //     {
             //     const DATA_OF_LESSON = res.data.data.attributes.lessons
             //     console.log(DATA_OF_LESSON)
@@ -35,7 +36,17 @@ const Gettopic = ({lessonId, courseId}) => {
         
     }, []);
 
-    // console.log(Data)
+    console.log(Data.D)
+
+    const DATA_RETURN = () =>{
+        if(Data.D.msg !== "you dont have prem"){
+            console.log("hiiiii")
+            return Data.D.map(topic => <TopicData key={topic.id} topicData={topic} />)
+        }
+        if(Data.D.msg === "you dont have prem"){
+            return <TopicData key={Math.random()} topicData={{LessonName : "لطفا برای دسترسی دوره را خریداری نمائید!"}} />
+        }
+    }
     
     
     
@@ -45,8 +56,7 @@ const Gettopic = ({lessonId, courseId}) => {
             <TopicDataLoading /> :
                 Data.E ?
                 <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
-                Data.D.map(topic => <TopicData key={topic.id} topicData={topic} />
-                )
+                DATA_RETURN()
             }
         </>
     );

@@ -35,6 +35,7 @@ const TopicData = ({topicData}) => {
                                 <h2 className="text-black dark:text-white">{topicData.LessonName}</h2>
                             </div>
                         </Disclosure.Button>
+                        {topicData.LessonContent ?
                         <Disclosure.Panel>
                             <div className="p-2 text-gray-800 dark:text-white/80">
                                 <p className="border border-dashed border-gray-400 p-2 rounded-md " dangerouslySetInnerHTML={{ __html: topicData.LessonContent }} />
@@ -109,7 +110,10 @@ const TopicData = ({topicData}) => {
                                 </div>
 
                             </div>
-                        </Disclosure.Panel>
+                        </Disclosure.Panel> :
+
+                        ""
+                         }
                     </div>
                 </Disclosure>
 

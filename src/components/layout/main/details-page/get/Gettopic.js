@@ -10,11 +10,11 @@ import TopicDataLoading from '../databoxLoading/topicDataLoading'
 const Gettopic = ({lessonId, courseId}) => {
 
     const [Data, setData] = useState({D: "", E: false});
-    // const [LessonID, setLessonID] = useState({D: "", E: false});
+    const [Test, setTest] = useState();
 
     
     useEffect(() => {
-
+        
         // Get Lessons Data
         const getLessonsID = ()=>{
             axios.get(`${BASE_COURSES_API}lessons/${lessonId}?populate=*`, {headers: authHeader() })
@@ -25,28 +25,55 @@ const Gettopic = ({lessonId, courseId}) => {
             //     console.log(DATA_OF_LESSON)
             //     DATA_OF_LESSON.map(lesson=>console.log(lesson)) 
             // }
-                )
+            )
             .catch(error => setData({...Data, E: true}))
             // mapLessonID()
         };
-        getLessonsID()
         
+        const user = localStorage.getItem("user");
+        // console.log(user)
+
+        function if_login (){
+            if(user){
+                getLessonsID()
+            }else{
+                return setData({...Data, D: `دوره خریداری نشده` })
+            }
+        }
+        if_login()
 
             
-        
     }, []);
-
-    console.log(Data.D)
-
-    const DATA_RETURN = () =>{
-        if(Data.D.msg !== "you dont have prem"){
-            console.log("hiiiii")
-            return Data.D.map(topic => <TopicData key={topic.id} topicData={topic} />)
+    // console.log(Data)
+    
+    useEffect(()=>{
+    
+        const DATA_RETURN = async () =>{
+            if(Data.D.msg !== "you dont have prem"){
+                return await setTest(Data.D.map(topic => <TopicData key={topic.id} topicData={topic} />))
+            }
+            if(Data.D.msg === "you dont have prem"){
+                return setTest(<TopicData key={Math.random()} topicData={{LessonName : "لطفا برای دسترسی دوره را خریداری نمائید!"}} /> )
+            }
         }
-        if(Data.D.msg === "you dont have prem"){
-            return <TopicData key={Math.random()} topicData={{LessonName : "لطفا برای دسترسی دوره را خریداری نمائید!"}} />
+
+        const RETURN_ME_IF_USER = ()=>{
+            const user = localStorage.getItem("user");
+            if(user){
+                return DATA_RETURN()
+            }else{
+                return setTest(<TopicData key={Math.random()} topicData={{LessonName : "لطفا برای دسترسی دوره را خریداری نمائید!"}} />)
+            }
         }
-    }
+        RETURN_ME_IF_USER()
+
+    },[Data])
+
+
+
+
+    // console.log(Test)
+
     
     
     
@@ -56,8 +83,8 @@ const Gettopic = ({lessonId, courseId}) => {
             <TopicDataLoading /> :
                 Data.E ?
                 <p>لطفا یعد از اطمینان از اتصال شبکه با پشتیبانی تماس حاصل نمائید!</p> :
-                DATA_RETURN()
-            }
+                Test
+}
         </>
     );
 };

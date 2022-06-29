@@ -32,7 +32,8 @@ const GetCoursed = () => {
                 <div id="Mainbox" className="col-span-12  flex flex-col  overflow-y-scroll scroll1">
                     <div id="Maincontent" className="bg-white/50 dark:bg-black/25 p-2 mb-52">
                         <div className="grid md:grid-cols-12">
-                            <div className="md:col-span-8">
+                            {/* Content Course Right Side */}
+                            <div className="md:col-span-8 p-1">
                                 {!Data.D ? 
                                 <DtailLoading /> :
                                     Data.E ?
@@ -40,6 +41,9 @@ const GetCoursed = () => {
                                     <Dtail props={Data.D.data.attributes} />
                                 }
                                 <Getlessons courseId={pageid} />
+                            </div>
+                            <div className='md:col-span-4 p-1 h-full'>
+                            <DtailLoading />
                             </div>
                         </div>
 

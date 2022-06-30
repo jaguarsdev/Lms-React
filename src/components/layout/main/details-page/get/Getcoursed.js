@@ -8,6 +8,8 @@ import Dtail from '../courseData';
 import DtailLoading from '../databoxLoading/courseDataLoading';
 import Rootheader from '../../../header/Rootheader';
 import Getlessons from './Getlessons';
+import Ostaddate from '../dtailpageoption/ostaddate';
+
 
 const GetCoursed = () => {
     const params = useParams();
@@ -43,7 +45,7 @@ const GetCoursed = () => {
                                 <Getlessons courseId={pageid} />
                             </div>
                             <div className='md:col-span-4 p-1 h-full'>
-                            <DtailLoading />
+                            <Ostaddate />
                             </div>
                         </div>
 

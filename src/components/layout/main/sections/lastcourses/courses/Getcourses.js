@@ -21,6 +21,7 @@ const GetCourses = () => {
     }, [dispatch])
 
     const DATA_OF_COURSE = coursesState.courses.data
+    // console.log(DATA_OF_COURSE)
 
 
     return (

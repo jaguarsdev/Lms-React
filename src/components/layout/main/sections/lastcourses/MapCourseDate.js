@@ -4,9 +4,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { isInCart } from '../../../../../module/cart/helper/FuncHelper'
  
+import imgostad from '../../../assets/images/osfallah.webp'
 import iconClock from '../../../assets/svgicon/iconClock.svg';
 import iconUser from '../../../assets/svgicon/iconUser.svg';
 import iconJalasat from '../../../assets/svgicon/iconJalasat.svg';
+import { IMGHOST } from '../../../../../module/api/baseUrl';
 
 const MapCourseDate = ({courseData, keyid}) => {
     // console.log(`http://localhost:1337${courseData.teachers.TeacherImage.data.attributes.formats.medium.url}`)
@@ -14,6 +16,10 @@ const MapCourseDate = ({courseData, keyid}) => {
 
     const state = useSelector(state => state.cartState);
     const dispatch = useDispatch();
+
+    courseData['idcourse'] = keyid
+    const IMAGEOFOSTAD = courseData.teachers.data[0].attributes.TeacherImage.data.attributes.url
+    // console.log(courseData.teachers.data[0].attributes.TeacherImage.data.attributes.url)
     
     return (
         <>
@@ -21,16 +27,17 @@ const MapCourseDate = ({courseData, keyid}) => {
 
                 <div id="prodTitle" className="flex items-center gap-2">
                 <Link to={`/course/${keyid}`}><div className="w-10 h-10 border border-teal-500 rounded-lg overflow-hidden">
-                        <img src={`http://localhost:1337${courseData.CourseImage.data.attributes.formats.medium.url}`} alt={courseData.CourseTitle} />
+                        <img src={IMGHOST+IMAGEOFOSTAD} alt={courseData.CourseTitle} />
+                        {/* <img src={`${IMGHOST}${courseData.CourseImage.data.attributes.formats.medium.url}`} alt={courseData.CourseTitle} /> */}
                     </div></Link>
                     <Link to={`/course/${keyid}`}><h3 className="font-bold">{courseData.CourseTitle}</h3></Link>
                 </div>
 
                 <div id="content" className="flex flex-col gap-2">
                     <div id="postImg" className="rounded-md overflow-hidden">
-                        <img src={`http://localhost:1337${courseData.CourseImage.data.attributes.formats.medium.url}`} alt={courseData.CourseTitle} className="w-full" />
+                        <img src={`${IMGHOST}${courseData.CourseImage.data.attributes.formats.medium.url}`} alt={courseData.CourseTitle} className="w-full" />
                     </div>
-                    <p className="">{courseData.summary}</p>
+                    {/* <p className="">{courseData.summary}</p> */}
                 </div>
 
                 <div id="option" className="flex flex-col">
@@ -48,11 +55,14 @@ const MapCourseDate = ({courseData, keyid}) => {
                                 
                             </ul>
                     </div>
+                    <Link to={`/course/${keyid}`} className="text-white">
                     <div className="bg-blue-600 py-1 rounded-md text-center font-bold w-full mb-1">
-                    <Link to={`/course/${keyid}`} className="text-white">جزئیات بیشتر</Link>
+                    جزئیات بیشتر
                     </div>
+                    </Link>
                     
                     {
+                        
                         isInCart(state, keyid) ?
                         <button className="font-bold" onClick={() => dispatch({type: "REMOVE_ITEM", payload: courseData})} ><div className="bg-white/0 border text-[#41c3d3] border-[#41c3d3] py-1 rounded-md text-center w-full">انصراف</div></button> :
                         <button className="text-white font-bold" onClick={() => dispatch({type: "ADD_ITEM", payload: courseData})} ><div className="bg-[#41c3d3] py-1 rounded-md text-center font-bold w-full">ثبت نام</div></button>

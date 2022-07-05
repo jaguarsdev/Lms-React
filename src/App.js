@@ -1,4 +1,4 @@
-import { Route, Routes, Navigate } from 'react-router-dom';
+import { Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 // import authService from './module/authentication/auth.service'
@@ -18,7 +18,7 @@ function App() {
           <Route path="/login" element={<Rootlayout />} />
           <Route path="/register" element={<Rootlayout />} />
           <Route path="/pay/*" element={<VerifyPage />} />
-          <Route path="/*" element={<Navigate to="/" />} />
+          <Route path="/*" element={<Rootlayout />} />
         </Routes>
       </Provider>
     </div>

@@ -5,14 +5,20 @@ import { Disclosure, Transition, Tab } from '@headlessui/react'
 import { Audio, Media, Video, MediaSync, MediaVisibility  } from '@vidstack/player/react';
 
 import leftarrow from '.././../assets/svgicon/leftarrow.svg';
-
+import { IMGHOST } from '../../../../module/api/baseUrl';
 
 
 
 
 const TopicData = ({topicData}) => {
-
+    
     // console.log(topicData)
+    // console.log(topicData.LessonFile.data[0].attributes.url)
+    
+    // const duc = IMGHOST+topicData.LessonFile.data[0].attributes.url
+    
+    // const duclink = duc
+    // console.log(duclink)
 
     return (
 
@@ -68,7 +74,7 @@ const TopicData = ({topicData}) => {
                                                         <video
                                                             controls
                                                             preload="none"
-                                                            src={"topicData.acf.video"}
+                                                            src={IMGHOST+topicData.LessonVideo.data.attributes.url}
                                                             // poster="https://media-files.vidstack.io/poster-seo.png"
                                                         />
                                                     </Video>
@@ -91,7 +97,7 @@ const TopicData = ({topicData}) => {
                                                             className="w-full"
                                                             controls
                                                             preload="none"
-                                                            src={"topicData.acf.mp3"}
+                                                            src={IMGHOST+topicData.LessonSot.data.attributes.url}
                                                         />
                                                     </Audio>
                                                 </MediaVisibility>
@@ -99,7 +105,7 @@ const TopicData = ({topicData}) => {
                                                 </Media>
                                             </Tab.Panel>
                                             <Tab.Panel>
-                                                <a href={"topicData.acf.document"} download >
+                                                <a href={IMGHOST+topicData.LessonFile.data[0].attributes.url} download >
                                                     <div className="hover:bg-[#41c3d3] hover:text-white text-[#41c3d3] font-semibold border border-[#41c3d3] px-5 py-1 rounded-lg w-11/12 m-auto text-center">
                                                         دانلود
                                                     </div>

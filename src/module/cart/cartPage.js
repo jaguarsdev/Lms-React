@@ -25,27 +25,32 @@ const CartPage = () => {
     total = total.reduce((a, b) => a + b , 0);
     const price = total.toLocaleString();
 
-    const coursrId = state.selectedItems.map(item => item.acf.idwo )
+    const coursrId = state.selectedItems.map(item => item.idcourse )
     // const productId = state.selectedItems.map(item => item.id )
     
     // console.log(coursrId,productId)
 
     // const sum = () => {
     // }
-    const useremail = (currentUser ? JSON.parse(localStorage.getItem("user")).user_email : JSON.parse(localStorage.getItem("pleaseLogin")).user_email)
-    const userId = (currentUser ? JSON.parse(localStorage.getItem("user")).user_id : JSON.parse(localStorage.getItem("pleaseLogin")).user_id)
+    const useremail = (currentUser ? JSON.parse(localStorage.getItem("user")).user.email : JSON.parse(localStorage.getItem("pleaseLogin")).user_email)
+    const userId = (currentUser ? JSON.parse(localStorage.getItem("user")).user.id : JSON.parse(localStorage.getItem("pleaseLogin")).user_id)
     // const productid = JSON.parse(localStorage.getItem("user")).user_id;
     // const totalPrice = total;
     // handlePay(useremail,totalPrice)
 
-    const handlePay = async (useremail, total, userId, productId) => {
+    const handlePay = async (useremail = "login", total, userId = "0", productId) => {
+
+        // console.log(useremail)
+        // console.log(total)
+        // console.log(userId)
+        // console.log(productId)
 
         try {
           await PaymentControler.requestToPay(total, useremail, userId, productId).then(
             () => {
                 //   window.location.reload();
-                const payKey = JSON.parse(localStorage.getItem("payKey")).authority;
-                window.location.href = `https://www.zarinpal.com/pg/StartPay/${payKey}`; 
+                // const payKey = JSON.parse(localStorage.getItem("payKey")).authority;
+                // window.location.href = `https://www.zarinpal.com/pg/StartPay/${payKey}`; 
         },
             (error) => {
               console.log(error);
@@ -54,6 +59,7 @@ const CartPage = () => {
           } catch (err) {
             console.log(err);
         }
+
       };
 
 
@@ -67,7 +73,7 @@ const CartPage = () => {
                     <div id="Maincontent" className="bg-white/50 dark:bg-black/25 p-2 mb-52">
                         <div className="grid md:grid-cols-12">
                             <div className="md:col-span-8 flex flex-col gap-2">
-                                {state.selectedItems.map(item => <Cart key={item.id} props={item} /> )}
+                                {state.selectedItems.map(item => <Cart key={item.idcourse} props={item} /> )}
 
                                 <div className='flex flex-col items-center md:flex-row gap-2'>
                                     <div className='bg-white/80 dark:bg-white/40 w-full rounded-lg p-3 shadow-md flex items-center justify-between'>

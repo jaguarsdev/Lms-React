@@ -8,7 +8,7 @@ import Dtail from '../courseData';
 import DtailLoading from '../databoxLoading/courseDataLoading';
 import Rootheader from '../../../header/Rootheader';
 import Getlessons from './Getlessons';
-import Ostaddate from '../dtailpageoption/ostaddate';
+import Ostaddate from '../dtailpageoption/Ostaddate';
 
 
 const GetCoursed = () => {
@@ -16,15 +16,27 @@ const GetCoursed = () => {
     const pageid = params.id;
 
     const [Data, setData] = useState({D: "", E: false});
+    const [Tdata, setTdata] = useState({IMG: "",NAME: "",IMG: "", E: false});
+    
 
     useEffect(() => {
         // Get Course Data
         axios.get(`${BASE_COURSES_API}courses/${pageid}?populate=CourseImage`)
-                .then(res => setData({...Data, D: res.data}))
+                .then(res => {
+                    setData({...Data, D: res.data})
+                    setTdata({...Tdata, IMG: res.data.data.attributes.teachers.data[0].attributes.TeacherImage.data.attributes.url, NAME: res.data.data.attributes.teachers.data[0].attributes})
+            })
                 .catch(error => setData({...Data, E: true}))
-
-    }, [pageid]);
-    // console.log(Data.D.data)
+                
+    }, []);
+    // console.log(Tdata)
+    // ;(async () => {
+    //     const teacherImg = await Data.D.data.attributes.teachers.data[0].attributes.TeacherImage.data.attributes.url
+    //     return setTeacher({...Data, D: teacherImg})
+    //     })()
+    // const  teacherImg = await Data.D.data.attributes.teachers.data[0].attributes.TeacherImage.data.attributes.url
+    //   console.log(Teacher)
+      
 
     return (
         <>  
@@ -45,7 +57,7 @@ const GetCoursed = () => {
                                 <Getlessons courseId={pageid} />
                             </div>
                             <div className='md:col-span-4 p-1 h-full'>
-                            <Ostaddate />
+                            <Ostaddate IMG={Tdata.IMG} NAME={Tdata.NAME}/>
                             </div>
                         </div>
 

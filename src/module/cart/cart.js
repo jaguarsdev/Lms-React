@@ -22,9 +22,9 @@ const Cart = ( {props} ) => {
                 <h1 className='mx-5 font-bold'> {props.CourseTitle} </h1>
                 <p className='mx-5'>{price} تومان </p>
                 {
-                    isInCart(state, props.idcourse) ?
-                    <button className="mx-5 font-bold" onClick={() => dispatch({type: "REMOVE_ITEM", payload: props})} ><div className="bg-white/0 rounded-md text-center w-full"><img src={closeicon} alt="icon" /></div></button> :
-                    <button className="mx-5 text-white font-bold" onClick={() => dispatch({type: "ADD_ITEM", payload: props})} ><div className="bg-[#41c3d3] py-1 rounded-md  px-2 text-center font-bold w-full">ثبت نام</div></button>
+                    // isInCart(state, props.idcourse) ?
+                    <button className="mx-5 font-bold" onClick={() => dispatch({type: "REMOVE_ITEM", payload: props})} ><div className="bg-white/0 rounded-md text-center w-full"><img src={closeicon} alt="icon" /></div></button> 
+                    // <button className="mx-5 text-white font-bold" onClick={() => dispatch({type: "ADD_ITEM", payload: props})} ><div className="bg-[#41c3d3] py-1 rounded-md  px-2 text-center font-bold w-full">موجود در سبد</div></button>
                 }
             </div>
         </div>

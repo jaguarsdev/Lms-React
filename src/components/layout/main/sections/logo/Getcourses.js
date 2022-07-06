@@ -45,19 +45,19 @@ const Logo = () => {
         onSlideChange={() => console.log('slide change')}
         onSwiper={(swiper) => console.log(swiper)}
         >
-            <SwiperSlide><img src={logo1} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo2} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo3} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo4} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo5} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo6} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo7} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo8} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo9} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo10} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo11} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo12} alt="1" /></SwiperSlide>
-            <SwiperSlide><img src={logo13} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo1} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo2} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo11} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo3} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo4} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo5} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo12} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo6} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo7} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo8} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo9} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo10} alt="1" /></SwiperSlide>
+            <SwiperSlide><img className='p-3 bg-white dark:bg-white/25 rounded-md shadow-md' src={logo13} alt="1" /></SwiperSlide>
 
         </Swiper>
     );

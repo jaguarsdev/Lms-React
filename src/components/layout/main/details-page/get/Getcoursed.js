@@ -16,7 +16,7 @@ const GetCoursed = () => {
     const pageid = params.id;
 
     const [Data, setData] = useState({D: "", E: false});
-    const [Tdata, setTdata] = useState({IMG: "",NAME: "",IMG: "", E: false});
+    const [Tdata, setTdata] = useState({IMG: "",NAME: "",MORE: "", E: false});
     
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const GetCoursed = () => {
         axios.get(`${BASE_COURSES_API}courses/${pageid}?populate=CourseImage`)
                 .then(res => {
                     setData({...Data, D: res.data})
-                    setTdata({...Tdata, IMG: res.data.data.attributes.teachers.data[0].attributes.TeacherImage.data.attributes.url, NAME: res.data.data.attributes.teachers.data[0].attributes})
+                    setTdata({...Tdata, IMG: res.data.data.attributes.teachers.data[0].attributes.TeacherImage.data.attributes.url, NAME: res.data.data.attributes.teachers.data[0].attributes, MORE: res.data.data.attributes.summary})
             })
                 .catch(error => setData({...Data, E: true}))
                 
@@ -35,7 +35,7 @@ const GetCoursed = () => {
     //     return setTeacher({...Data, D: teacherImg})
     //     })()
     // const  teacherImg = await Data.D.data.attributes.teachers.data[0].attributes.TeacherImage.data.attributes.url
-    //   console.log(Teacher)
+    //   console.log(Tdata.MORE)
       
 
     return (
@@ -57,7 +57,7 @@ const GetCoursed = () => {
                                 <Getlessons courseId={pageid} />
                             </div>
                             <div className='md:col-span-4 p-1 h-full'>
-                            <Ostaddate IMG={Tdata.IMG} NAME={Tdata.NAME}/>
+                            <Ostaddate IMG={Tdata.IMG} NAME={Tdata.NAME} MORE={Tdata.MORE}/>
                             </div>
                         </div>
 

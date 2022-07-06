@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { BASE_COURSES_API } from '../../../../../module/api/baseUrl';
-import authHeader from '../../../../../module/authentication/auth-header'
+import {authHeader} from '../../../../../module/authentication/auth-header'
 
 import TopicData from '../topicData'
 import TopicDataLoading from '../databoxLoading/topicDataLoading'
@@ -44,11 +44,14 @@ const Gettopic = ({lessonId, courseId}) => {
 
             
     }, []);
-    // console.log(Data)
+    console.log(Data)
     
     useEffect(()=>{
     
         const DATA_RETURN = async () =>{
+            // if(Data.E === true){
+            //     return setTest(<TopicData key={Math.random()} topicData={{LessonName : "لطفا برای دسترسی دوره را خریداری نمائید!"}} /> )
+            // }
             if(Data.D.msg !== "you dont have prem"){
                 return await setTest(Data.D.map(topic => <TopicData key={topic.id} topicData={topic} />))
             }

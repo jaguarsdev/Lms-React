@@ -2,13 +2,13 @@ const HOST = "https://back.lmsava.ir/";
 
 const IMGHOST = "https://back.lmsava.ir";
 
-const PAYMENT = "https://test2.lmsava.ir/request.php";
+const PAYMENT = "https://pay.lmsava.ir/request.php";
 
-const PAYMENTV = "https://test2.lmsava.ir/verify.php";
+const PAYMENTV = "https://pay.lmsava.ir/verify.php";
+
+const PAYMENT_BACK = `https://pay.lmsava.ir/sendtopay.php`;
 
 const MERCHENT = "a49f690a-559f-11e8-baf3-005056a205be";
-
-const PAYMENT_BACK = `${HOST}pay/`;
 
 const BASE = "https://back.lmsava.ir/api/";
 

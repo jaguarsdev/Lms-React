@@ -25,7 +25,7 @@ const CartPage = () => {
     total = total.reduce((a, b) => a + b , 0);
     const price = total.toLocaleString();
 
-    const coursrId = state.selectedItems.map(item => item.idcourse )
+    const coursrId = state.selectedItems.map(item => item.lessons.data.map(item=> item.id) )
     // const productId = state.selectedItems.map(item => item.id )
     
     // console.log(coursrId,productId)
@@ -34,19 +34,35 @@ const CartPage = () => {
     // }
     const useremail = (currentUser ? JSON.parse(localStorage.getItem("user")).user.email : JSON.parse(localStorage.getItem("pleaseLogin")).user_email)
     const userId = (currentUser ? JSON.parse(localStorage.getItem("user")).user.id : JSON.parse(localStorage.getItem("pleaseLogin")).user_id)
+    const username = (currentUser ? JSON.parse(localStorage.getItem("user")).user.username : JSON.parse(localStorage.getItem("pleaseLogin")).user_email)
     // const productid = JSON.parse(localStorage.getItem("user")).user_id;
     // const totalPrice = total;
     // handlePay(useremail,totalPrice)
 
-    const handlePay = async (useremail = "login", total, userId = "0", productId) => {
+    const handlePay = async (username = "username", useremail = "useremail", total, userId = "userId", productId) => {
 
-        // console.log(useremail)
-        // console.log(total)
-        // console.log(userId)
-        // console.log(productId)
+        console.log(username)
+        console.log(useremail)
+        console.log(total)
+        console.log(userId)
+        // let endID = {}
+        // let ttest = productId.map(item=>item)
+        // let arrayLength = ttest.length;
+        // for (var i = 0; i < arrayLength; i++) {
+        //     let arrr = ttest[i]
+        //     let arrayLength = arrr.length;
+        //         for (var i = 0; i < arrayLength; i++) {
+        //             // console.log(arrr[i])
+        //             endID[i] = arrr[i];
+        //         }
+        // }
+        
+        // console.log(merged);
+        var merged = [].concat.apply([], productId);
+        // console.log(merged)
 
         try {
-          await PaymentControler.requestToPay(total, useremail, userId, productId).then(
+          await PaymentControler.requestToPay(username, total, useremail, userId, merged).then(
             () => {
                 //   window.location.reload();
                 // const payKey = JSON.parse(localStorage.getItem("payKey")).authority;
@@ -80,7 +96,7 @@ const CartPage = () => {
                                         <p className='px-5'><span className='font-bold' > مجموع دوره ها : </span>{state.itemsCounter}</p>
                                         <p className='px-5'><span className='font-bold' > جمع پرداختی : </span> { price } تومان </p>
                                     </div>
-                                    <button onClick={() => handlePay(useremail,total,userId,coursrId)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
+                                    <button onClick={() => handlePay(username,useremail,total,userId,coursrId)} className="text-white font-bold rounded-md shadow-md w-full md:w-fit" >
                                         <div className="bg-[#41c3d3] hover:bg-[#239dad] py-3 md:px-12 rounded-md text-center font-bold w-full"> پرداخت </div>
                                     </button>
                                 </div>

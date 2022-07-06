@@ -10,4 +10,14 @@ function authHeader() {
   }
 }
 
-export default authHeader;
+function authBar() {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (user && user.jwt) {
+    return user.jwt;
+  } else {
+    return {};
+  }
+}
+
+export {authHeader, authBar};

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
 import { BASE_COURSES_API } from '../../../../../module/api/baseUrl';
-import authHeader from '../../../../../module/authentication/auth-header'
+import {authHeader} from '../../../../../module/authentication/auth-header'
 
 import LessonData from '../lessonData';
 import LessonDataLoading from '../databoxLoading/lessonDataLoading';

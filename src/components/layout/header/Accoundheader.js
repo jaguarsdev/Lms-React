@@ -1,16 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, Transition } from '@headlessui/react'
 import { Link } from 'react-router-dom';
-
+import axios from 'axios'
 import AuthService from '../../../module/authentication/auth.service'
 import Darkandlight from './Darkandlight';
-
+import { IMGHOST } from '../../../module/api/baseUrl';
 import profile_img from '../assets/images/profile.jpg'
+import { authBar } from '../../../module/authentication/auth-header';
 
 
 
 const Accoundheader = () => {
   const [currentUser, setCurrentUser] = useState(undefined);
+  const [Accimg, setAccimg] = useState(undefined);
 
   const logOut = () => {
     AuthService.logout();
@@ -23,7 +25,32 @@ const Accoundheader = () => {
     if (user) {
       setCurrentUser(user);
     }
+
+    const userId = (currentUser ? JSON.parse(localStorage.getItem("user")).user.id : JSON.parse(localStorage.getItem("pleaseLogin")).user_id)
+    var config = {
+      method: 'get',
+      url: `https://back.lmsava.ir/api/users/${userId}?populate=profilePic`,
+      headers: { 
+        'Authorization': `Bearer ${authBar()}`, 
+        'Content-Type': 'application/json'
+      }
+    };
+
+    axios(config)
+    .then(async function (response) {
+      const res = await response
+      await setAccimg( await res.data.profilePic? await res.data.profilePic.formats.thumbnail.url : "/uploads/sabkezendegi_4cfbd65118.webp")
+      console.log(res);
+      console.log(Accimg);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+
+
   }, []);
+
+
 
   const  pleaseLogin = {
     token: "pleaseLogin",
@@ -48,7 +75,7 @@ const Accoundheader = () => {
                 <Menu>
                     <div id="avatar" className="flex items-center">
                   <Menu.Button className="w-9 h-9 rounded-full mr-3 ring-2 ring-white overflow-hidden">
-                        <img src={profile_img} className="" alt="" />
+                        <img src={IMGHOST+Accimg} className="" alt="" />
                   </Menu.Button>
                     </div>
                     <Transition

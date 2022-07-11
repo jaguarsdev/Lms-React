@@ -1,0 +1,142 @@
+<?php
+
+
+$url2 = basename($_SERVER['REQUEST_URI']);
+	
+$url_components = parse_url($url2);
+
+parse_str($url_components['query'], $params);
+	
+
+// $params['barr']
+// $params['callback_url'];
+
+$myObj = new stdClass();
+
+$myObj->merchant_id = "cc931f78-d41a-4f9d-a059-07487eba6359";
+$myObj->amount = $params['amount'];
+$myObj->authority = $params['Authority'];
+
+$myJSON = json_encode($myObj);
+
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => 'https://api.zarinpal.com/pg/v4/payment/verify.json',
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => '',
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 0,
+  CURLOPT_FOLLOWLOCATION => true,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => 'POST',
+  CURLOPT_POSTFIELDS => $myJSON ,
+  CURLOPT_HTTPHEADER => array(
+    'Content-Type: application/json'
+  ),
+));
+
+$response = curl_exec($curl);
+
+curl_close($curl);
+
+
+$Verif_Res = json_decode($response,true);
+
+$Verif_code = ($Verif_Res["data"]["code"]);
+$Verif_message = ($Verif_Res["data"]["message"]);
+$Verif_card_pan = ($Verif_Res["data"]["card_pan"]);
+$Verif_ref_id = ($Verif_Res["data"]["ref_id"]);
+$Verif_card_hash = ($Verif_Res["data"]["card_hash"]);
+$Verif_OrderStatus = "Successful";
+
+// var_dump($Verif_Code);
+// echo $Verif_code;
+// echo ("<br>");
+// echo $Verif_message;
+// echo ("<br>");
+// echo $Verif_card_pan;
+// echo ("<br>");
+// echo $Verif_ref_id;
+// echo ("<br>");
+// echo $Verif_card_hash;
+// echo ("<br>");
+$ORDERID = $params['orderID'];
+// echo "https://back.lmsava.ir/api/orders/{$ORDERID}";
+$barr = $params['barr'];
+$BAR = "Authorization: Bearer {$barr}";
+// echo $barr;
+
+
+if ($Verif_code == 101) {
+    
+    
+  echo( " پرداخت قبلا انجام شده " );
+  
+  
+  
+} elseif($Verif_code == 100) {
+    
+    
+  
+  
+  $data = new stdClass();
+
+    $data->OrderStatus = $Verif_OrderStatus;
+    $data->card_hash = $Verif_card_hash;
+    $data->card_pan = $Verif_card_pan;
+    $data->ref_id = (string)$Verif_ref_id;
+    $data->ZStatus = true;
+    
+    $myObj2 = new stdClass();
+
+    $myObj2->data = $data;
+    
+    $myJSON2 = json_encode($myObj2);
+    var_dump($myJSON2);
+
+    $curl = curl_init();
+    
+    curl_setopt_array($curl, array(
+      CURLOPT_URL => "https://back.lmsava.ir/api/orders/{$ORDERID}",
+      CURLOPT_RETURNTRANSFER => true,
+      CURLOPT_ENCODING => '',
+      CURLOPT_MAXREDIRS => 10,
+      CURLOPT_TIMEOUT => 0,
+      CURLOPT_FOLLOWLOCATION => true,
+      CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      CURLOPT_CUSTOMREQUEST => 'PUT',
+      CURLOPT_POSTFIELDS =>$myJSON2,
+      CURLOPT_HTTPHEADER => array(
+        $BAR,
+        'Content-Type: application/json'
+      ),
+    ));
+    
+    $response = curl_exec($curl);
+    
+    curl_close($curl);
+    echo ("پرداخت انجام شد");
+    echo ("کد پیگیری شما")
+    echo $Verif_ref_id;
+  
+  
+  
+  
+
+  
+  
+} else {
+    
+    
+    echo "متاسفانه پرداخت شکست خورد، در صورت نیاز با پشتیبانی تماس بگیرید";
+    
+    
+}
+
+
+
+
+
+

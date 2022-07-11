@@ -62,16 +62,7 @@ const CartPage = () => {
         // console.log(merged)
 
         try {
-          await PaymentControler.requestToPay(username, total, useremail, userId, merged).then(
-            () => {
-                //   window.location.reload();
-                // const payKey = JSON.parse(localStorage.getItem("payKey")).authority;
-                // window.location.href = `https://www.zarinpal.com/pg/StartPay/${payKey}`; 
-        },
-            (error) => {
-              console.log(error);
-            }
-            );
+          await PaymentControler.requestToPay(username, total, useremail, userId, merged)
           } catch (err) {
             console.log(err);
         }

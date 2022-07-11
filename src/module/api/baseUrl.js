@@ -6,9 +6,9 @@ const PAYMENT = "https://pay.lmsava.ir/request.php";
 
 const PAYMENTV = "https://pay.lmsava.ir/verify.php";
 
-const PAYMENT_BACK = `https://pay.lmsava.ir/sendtopay.php`;
+const PAYMENT_BACK = `https://pay.lmsava.ir/verify.php`;
 
-const MERCHENT = "a49f690a-559f-11e8-baf3-005056a205be";
+const MERCHENT = "cc931f78-d41a-4f9d-a059-07487eba6359";
 
 const BASE = "https://back.lmsava.ir/api/";
 
